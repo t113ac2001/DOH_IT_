@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歌曲應援練習室 | DOH IT !</title>
+    <!-- Google 字體：手寫塗鴉英文與標準無襯線體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="song-page-body">
+
+    <!-- 頂部導覽列 -->
+    <nav class="song-nav">
+        <a href="index.html" class="nav-back">← 返回應援總整理</a>
+        <span class="nav-brand">DOH IT ! TAIWAN</span>
+    </nav>
+
+    <!-- 歌曲切換選單按鈕列 (8 首完整應援曲目) -->
+    <div class="song-selector-bar">
+        <div class="selector-container">
+            <button class="song-tab-btn active" onclick="selectSong('mars', this)">🪐 Mars</button>
+            <button class="song-tab-btn" onclick="selectSong('popcorn', this)">🍿 Popcorn</button>
+            <button class="song-tab-btn" onclick="selectSong('ido', this)">✨ 별 떨어진다 (I Do)</button>
+            <button class="song-tab-btn" onclick="selectSong('thatsokay', this)">🌙 괜찮아도 괜찮아 (That's okay)</button>
+            <button class="song-tab-btn" onclick="selectSong('rose', this)">🌹 Rose</button>
+            <button class="song-tab-btn" onclick="selectSong('singalong', this)">🎤 Sing Along</button>
+            <button class="song-tab-btn" onclick="selectSong('doyouremember', this)">🎈 Do You Remember</button>
+            <button class="song-tab-btn" onclick="selectSong('fiveminutes', this)">⏱️ 5 Minutes</button>
+        </div>
+    </div>
+
+    <!-- 歌曲標題區 -->
+    <header class="song-header">
+        <span class="song-badge">DOH IT !</span>
+        <h1 class="song-title" id="current-title">Mars</h1>
+        <p class="song-artist" id="current-artist">도경수 DOH KYUNG SOO</p>
+    </header>
+
+    <main class="song-container">
+
+        <!-- YouTube 教學影片區 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe id="current-video"
+                        src="https://www.youtube-nocookie.com/embed/Vr4ZzauoTbM" 
+                        title="應援教學影片" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-tip">建議播放影片跟著節奏與空耳大聲練習！</p>
+        </div>
+
+        <!-- 應援顏色標示說明 -->
+        <div class="cheer-legend-bar">
+            <div class="legend-item">
+                <span class="dot dot-white"></span>
+                <span>白色字體：歌手演唱</span>
+            </div>
+            <div class="legend-item">
+                <span class="dot dot-pink"></span>
+                <span class="highlight-pink">粉紅粗體：粉絲應援</span>
+            </div>
+        </div>
+
+        <!-- 滿版應援歌詞區 -->
+        <section class="lyrics-sheet" id="current-lyrics">
+            <!-- 歌詞由 JavaScript 動態填入 -->
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="song-footer">
+        <a href="index.html" class="footer-back-btn">← 回到應援首頁</a>
+        <p class="copyright">© 2026-2027 DOH KYUNG SOO SUPPORT PROJECT. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- 歌曲資料庫與切換腳本 -->
+    <script>
+        const songs = {
+            mars: {
+                title: "Mars",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/Vr4ZzauoTbM",
+                lyrics: `
+                    <div class="verse">
+                        <p>너와 난 다른 별에 살아 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>평생 떠난 적 없는 Mars <span class="chant">（사랑해 / 撒浪嘿）</span></p>
+                        <p>너를 볼 수 있다는 Venus <span class="chant">（누구야 / 努估呀）</span></p>
+                        <p>그 먼 곳으로 날아갈까 <span class="chant">（가지마 / 卡基麻）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>잠 못 이루는 밤 더 커지는 맘</p>
+                        <p>속 작은 걱정 <span class="chant">음 예를 들어 / 嗯 耶日特肉</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>우리 만나면 혹시 너무나 많이</p>
+                        <p>다르지 않길 바라고 있어</p>
+                        <p>고민보다 더 빨리</p>
+                        <p>네게 가까이 닿고 싶어</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>But now I'm stuck on Mars Ooh~</p>
+                        <p>You know I'm stuck on Ooh~</p>
+                        <p>But now I'm stuck on Mars</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>"안녕" 인사를 하고 나면 <span class="chant">（아안녕 / 啊安妞）</span></p>
+                        <p>외계인 같다 느낄지도 몰라 <span class="chant">（깐따삐야 / 感打逼呀）</span></p>
+                        <p>어떤 표정을 준비해야 <span class="chant">（웃어줘 / 嗚搜啾）</span></p>
+                        <p>내 맘 전할 수 있을까 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>알 수 없는 만남 더 궁금한 맘</p>
+                        <p>속 작은 걱정 <span class="chant">음 예를 들어 / 嗯 耶日特肉</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>우리 만나면 혹시 너무나 많이</p>
+                        <p>다르지 않길 바라고 있어</p>
+                        <p>고민보다 더 빨리</p>
+                        <p>네게 가까이 닿고 싶어</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>But now I'm stuck on Mars <span class="chant">（함께할게도경수 / 和給哈給Doh Kyung soo）</span></p>
+                        <p>You know I'm stuck on <span class="chant">（우주최강도경수 / 屋住催康Doh Kyung soo）</span></p>
+                        <p>You know I'm stuck on Mars <span class="chant">（나는너를못잊어 / 那嫩no日某一九）</span></p>
+                        <p>You know I'm stuck on <span class="chant">（오늘저녁삼겹살 / 歐呢秋妞三ㄎㄧㄡ賽）</span></p>
+                        <p>But now I'm stuck on Mars</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>시간이 지나고 나면 사소한 걱정일 뿐일 걸 알아</p>
+                        <p>함께할게 네 곁에서 하나둘씩 닮아가길</p>
+                        <p>마치 오래된 사이처럼 똑같이 웃을 수 있길 바라고 있어</p>
+                        <p>매일 설레는 고민 보다 먼 거린 두렵지만</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>But now I fly from Mars</p>
+                        <p>You know I fly from</p>
+                        <p>You know I fly from Mars</p>
+                        <p>You know I fly from</p>
+                        <p>But now I fly from Mars</p>
+                    </div>
+                `
+            },
+            popcorn: {
+                title: "Popcorn",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/i3vx9PAptpk",
+                lyrics: `
+                    <div class="verse">
+                        <p>처음 만난 그날의 장면 <span class="chant">（장면 / 嗆myeon）</span></p>
+                        <p>참 나답지 않던 그 떨림 <span class="chant">（떨림 / 抖琳）</span></p>
+                        <p>무표정히 서 있던 날 잊은 듯</p>
+                        <p>맘 설레게 했던 예쁜 웃음 <span class="chant">/ 耶啵 烏斯</span></p>
+                        <p>봄날처럼 포근한 눈빛 <span class="chant">（눈빛 / nun畢）</span></p>
+                        <p>언 내 맘을 녹였던가 봐</p>
+                        <p>두 눈에 씌워진 콩깍지처럼 <span class="chant">（콩깍지 / 共尬技）</span></p>
+                        <p>너의 모든 순간이 예뻐 보여</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>그대가 내게 준 설렘이죠 <span class="chant">/ so 勒咪啾</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>첨 그날처럼 <span class="chant">（팝 / pop）</span></p>
+                        <p>그댈 보면 행복해져 <span class="chant">（콘 / corn）</span></p>
+                        <p>떨림을 잊었던 맘도 <span class="chant">（팝콘 / popcorn）</span></p>
+                        <p>터질 듯 설레 마치 Popcorn <span class="chant">（ho!）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>달콤해진 맘이 매일 <span class="chant">（팝 / pop）</span></p>
+                        <p>Popcorn처럼 튀는 느낌 <span class="chant">（콘 / corn）</span></p>
+                        <p>달디단 당신의 말도 <span class="chant">（팝콘 / popcorn）</span></p>
+                        <p>터질 듯 설레 마치 Popcorn</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>매일의 새로운 면도 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>어느새 익숙한 면도 <span class="chant">（사랑해 / 莎浪嘿）</span></p>
+                        <p>사랑스럽게만 보이는 맘 당신과도 나누고 싶은 이 맘</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>"펑" 하고 터질 것 같은 기분 <span class="chant">/ 卡疼 gi奔</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>첨 그날처럼 <span class="chant">（팝 / pop）</span></p>
+                        <p>그댈 보면 행복해져 <span class="chant">（콘 / corn）</span></p>
+                        <p>떨림을 잊었던 맘도 <span class="chant">（팝콘 / popcorn）</span></p>
+                        <p>터질 듯 설레 마치 Popcorn <span class="chant">（ho!）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>달콤해진 맘이 매일 <span class="chant">（팝 / pop）</span></p>
+                        <p>Popcorn처럼 튀는 느낌 <span class="chant">（콘 / corn）</span></p>
+                        <p>달디단 당신의 말도 <span class="chant">（팝콘 / popcorn）</span></p>
+                        <p>터질 듯 설레 마치 Popcorn</p>
+                    </div>
+
+                    <div class="verse">
+                        <p><span class="chant">（참 그날처럼 그댈 보면 행복해져 / 參 肯那秋龍 ㄎ day 噗謬 嘿不ㄎㄟ 啾）</span></p>
+                        <p><span class="chant">（떨림을 잊었던 맘도 / 抖琳ㄇ 一揪棟 罵督）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>터질 듯 설레 마치 Popcorn <span class="chant">/ 偷幾 特 so累 媽起Popcorn</span></p>
+                        <p>믿을 수 없어 매일같이 행복해져</p>
+                        <p>둘만의 모든 순간도 터질 듯 설레 마치 Popcorn</p>
+                        <p>사랑이란 봄꽃잎이 <span class="chant">（팝 / pop）</span></p>
+                        <p>걸음마다 휘날리지 <span class="chant">（콘 / corn）</span></p>
+                        <p>함께할 모든 순간도 <span class="chant">（팝콘 / popcorn）</span></p>
+                        <p>터질 듯 설레 마치 Popcorn</p>
+                    </div>
+                `
+            },
+            ido: {
+                title: "별 떨어진다 (I Do)",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/Zihzn02ySCM",
+                lyrics: `
+                    <div class="verse">
+                        <p>I do I do</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>밝은 빛은 별 뿐인 고요한 오늘 밤 <span class="chant">（오늘밤 / 嗚嫩棒）</span></p>
+                        <p>잔잔한 풀벌레 소린 멋진 노랫말 <span class="chant">（노랫말 / 怒淚罵）</span></p>
+                        <p>내 어깨 위로 살짝 기대진 너의 온긴</p>
+                        <p>맘을 괜히 들뜨게 해 설렘 끝에 번지는 기대감</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>소원 빌래? 별 떨어진다 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>잠깐이라 또 놓쳤지만 <span class="chant">（사랑해 / 莎浪嘿）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>금방 더 떨어지겠지</p>
+                        <p>밤이 끝날 때까지</p>
+                        <p>원하는 게 딱 하난데 난</p>
+                        <p>내 소원 듣게 되면 I do I do</p>
+                        <p>웃으며 대답해 줘 I do I do</p>
+                        <p><span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>둘이 아닌 우린 어떤 모습일까 <span class="chant">（ho!）</span></p>
+                        <p>꼭 하나인 것 같이 서로를 잘 알아 <span class="chant">（알아 / 阿辣）</span></p>
+                        <p>수없이 많은 기억들이 똑같을 너와 나</p>
+                        <p>상상만 했는데 다 이뤄진 것 같아</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>넌 아무거나 마구 빌어도 돼</p>
+                        <p>내가 전부 듣고 이뤄줄게 <span class="chant">/ 內尬 窮部 特故 一路揪給</span></p>
+                        <p>저 별을 갖고 싶다 말하면 따다 줄게</p>
+                        <p>맘으로만 혼자 빌어도 돼</p>
+                        <p>말해줄 때까지 기다릴게 <span class="chant">/ 罵類丘 ㄉㄟ尬技 gi大哩ㄍㄟˋ</span></p>
+                        <p>네 마음이 눈에 보였음 해</p>
+                        <p>하늘에 저 별들처럼</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>소원 빌래? 별 떨어진다 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>잠깐이라 또 놓쳤지만 <span class="chant">（사랑해 / 莎浪嘿）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>금방 더 떨어지겠지</p>
+                        <p>밤이 끝날 때까지</p>
+                        <p>원하는 게 딱 하난데 난</p>
+                        <p>내 소원 듣게 되면 I do I do</p>
+                        <p>웃으며 대답해 줘 I do I do</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>너만 좋다면 <span class="chant">（좋아 / 丘阿）</span> 그게 뭐라도</p>
+                        <p>네가 간다면 <span class="chant">（따라가 / 大拉卡）</span> 어딜 간대도</p>
+                        <p>오랜 시간 흘러가도</p>
+                        <p>함께 있으면 좋겠어</p>
+                        <p>너는 나 난 네 옆에서</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>소원 빌래? 별 떨어진다</p>
+                        <p>잠깐이라 또 놓쳤지만</p>
+                        <p>이젠 뭐 상관없겠지</p>
+                        <p>이미 눈치챘으니</p>
+                        <p>원하는 건 너 하나뿐야</p>
+                        <p>영원히 함께해 줘 I do I do</p>
+                        <p>웃으며 대답해 줘 I do I do</p>
+                        <p>I do I do</p>
+                    </div>
+                `
+            },
+            thatsokay: {
+                title: "괜찮아도 괜찮아 (That's okay)",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/W3qnKPQAWLk",
+                lyrics: `
+                    <div class="verse">
+                        <p>숱하게 스쳐간</p>
+                        <p>감정들에 무뎌지는 감각</p>
+                        <p>언제부턴가 익숙해져 버린</p>
+                        <p>마음을 숨기는 법들</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>난 어디쯤에 와 있나</p>
+                        <p>앞만 보고 달려오기만 했던</p>
+                        <p>돌아보는 것도 왠지 겁이 나</p>
+                        <p>미뤄둔 얘기들</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>시간이 가듯 내 안엔 행복했었던 때론</p>
+                        <p>가슴이 저릴 만큼 눈물겨운 날도</p>
+                        <p>매일 같이 뜨고 지는 태양과</p>
+                        <p>저 달처럼 자연스레 보내</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>때론 울고 <span class="chant">（A-yo）</span> 때론 웃고 <span class="chant">（A-yo）</span></p>
+                        <p>기대하고 <span class="chant">（A-yo）</span> 아파하지 <span class="chant">（A-yo）</span></p>
+                        <p>다시 설레고 <span class="chant">（A-yo）</span> 무뎌지고 <span class="chant">（A-yo）</span></p>
+                        <p>마음이 가는 대로 있는 그대로</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>수많은 별이 그랬듯이</p>
+                        <p>언제나 같은 자리</p>
+                        <p>제 몫의 빛으로 환하게 비출 테니</p>
+                        <p>숨기지 말고 너를 보여 줄래 편히</p>
+                        <p>네 모습 그대로 그래 괜찮아 괜찮아도 <span class="chant">/ 肯洽拿 肯洽拿督</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>오늘 난 처음으로</p>
+                        <p>솔직한 내 마음을 마주해</p>
+                        <p>거울 앞에 서는 것도 머뭇대</p>
+                        <p>이 표정은 또 왜 이리도 어색해</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>아름다운 건 늘 소중하고</p>
+                        <p>잠시 머물다 아득히 멀어져도</p>
+                        <p>늘 마주 보듯 평범한</p>
+                        <p>일상을 채울 마음의 눈</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>그 안에 감춰둔 외로움도</p>
+                        <p>잠시 머물 수 있게 해 그저 바라봐</p>
+                        <p>부드러운 바람이 불면</p>
+                        <p>마음을 열어 지나갈 하루야</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>때론 울고 <span class="chant">（A-yo）</span> 때론 웃고 <span class="chant">（A-yo）</span></p>
+                        <p>기대하고 <span class="chant">（A-yo）</span> 아파하지 <span class="chant">（A-yo）</span></p>
+                        <p>다시 설레고 <span class="chant">（A-yo）</span> 무뎌지고 <span class="chant">（A-yo）</span></p>
+                        <p>마음이 가는 대로 있는 그대로</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>수많은 별이 그랬듯이</p>
+                        <p>언제나 같은 자리</p>
+                        <p>제 몫의 빛으로 환하게 비출 테니</p>
+                        <p>숨기지 말고 너를 보여 줄래 편히</p>
+                        <p>네 모습 그대로 그래 괜찮아 괜찮아도 <span class="chant">/ 肯洽拿 肯洽拿督</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>두 손에 가득 채워질 추억들은</p>
+                        <p>소중한 우리 이야기</p>
+                        <p>진심이 담긴 마음이 시간이 지나 다시 기억할 수 있다면</p>
+                        <p>말할 수 있을 까</p>
+                        <p>너도 행복했다고</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>너와 울고 <span class="chant">（A-yo）</span> 같이 웃고 <span class="chant">（A-yo）</span></p>
+                        <p>기대하고 <span class="chant">（A-yo）</span> 아파했지 <span class="chant">（A-yo）</span></p>
+                        <p>모든 걸 쏟고 <span class="chant">（A-yo）</span> 사랑하고 <span class="chant">（A-yo）</span></p>
+                        <p>마음이 가는 대로 있는 그대로</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>말하지 못할 고민거리</p>
+                        <p>깊게 상처 난 자리</p>
+                        <p>늘 같은 속도로 흘러가는 시간이</p>
+                        <p>언제나 그랬듯이 씻어내 줄 테니</p>
+                        <p>흐르듯 살아도 그냥 괜찮아 괜찮아도</p>
+                    </div>
+                `
+            },
+            rose: {
+                title: "Rose",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/BKM7qR1EolI",
+                lyrics: `
+                    <div class="verse">
+                        <p><span class="chant">（도.경.수 사랑.해 / Doh. Kyung. soo 莎浪. 嘿）</span></p>
+                        <p>먼지 없는 파란 하늘 위로 <span class="chant">（ah yeah yeah yeah）</span></p>
+                        <p>바람 따라가는 구름처럼 <span class="chant">（ah yeah yeah yeah）</span></p>
+                        <p>멀리 가지 말아요 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>그대로 머물러줘</p>
+                        <p>My baby 내 맘에 매일 <span class="chant">（ah yeah yeah yeah）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>봄날 같은 그댄 예뻐요 좋아요 <span class="chant">/ 邱挖油</span></p>
+                        <p>어떡하면 내게 올까요 이러는 <span class="chant">/ 一嘍能</span></p>
+                        <p>내 모습이 쑥스럽고</p>
+                        <p>간지러워도 어쩔 수 없죠</p>
+                        <p>그댈 사랑해요 baby</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>눈뜨면 생각나는 사람이 <span class="chant">（ah yeah yeah yeah）</span></p>
+                        <p>그대란 걸 그대는 알까요 <span class="chant">（ah yeah yeah yeah）</span></p>
+                        <p>모른 체하지 마요 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>다 알고 있잖아요</p>
+                        <p>Oh maybe baby <span class="chant">（ah yeah yeah yeah）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>매일 봐도 그댄 예뻐요 좋아요 <span class="chant">/ 邱挖油</span></p>
+                        <p>어떡하면 내게 올까요 이러는 <span class="chant">/ 一嘍能</span></p>
+                        <p>내 모습이 쑥스럽고</p>
+                        <p>간지러워도 어쩔 수 없죠</p>
+                        <p>내 사랑이 돼요 baby</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>동네 꽃집을 찾아</p>
+                        <p>그대에게 주고 싶은 꽃</p>
+                        <p>아무리 고민해도</p>
+                        <p>아는 꽃이 장미밖에 없어</p>
+                        <p>용기 내 한가득 품에 담아</p>
+                        <p>그대에게 가고 있어요 <span class="chant">（ah yeah yeah yeah）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>장미 보다 그댄 예뻐요 사실은 <span class="chant">/ 撒西能</span></p>
+                        <p>말로 표현을 잘 못해요 이러는 <span class="chant">/ 一嘍能</span></p>
+                        <p>내 모습이 쑥스럽고</p>
+                        <p>간지러워도 어쩔 수 없죠</p>
+                        <p>오늘부터 우린 lover</p>
+                    </div>
+                `
+            },
+            singalong: {
+                title: "Sing Along",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/k1x-mqbtKLI",
+                lyrics: `
+                    <div class="verse">
+                        <p>Make sing along! <span class="chant">（Make sing along!）</span></p>
+                        <p>Forget tomorrow <span class="chant">（Forget tomorrow）</span></p>
+                        <p>Bring that sing along! <span class="chant">（That sing along!）</span></p>
+                        <p>We're never solo <span class="chant">（Never solo）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>보통의 날들관</p>
+                        <p>차별을 둘 거야 <span class="chant">（ye yippie yai yo）</span></p>
+                        <p>동그랗게 입 맞춰 say O <span class="chant">（ye yippie yai yo）</span></p>
+                        <p>아직은 서로 멋쩍어도 돼</p>
+                        <p>여럿이면 혼잣말도</p>
+                        <p>곧 함성이 될 테니까 <span class="chant">/ 漢鬆一 推 ㄊㄟ 尼尬</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Make sing along! <span class="chant">（Make sing along!）</span></p>
+                        <p>Forget tomorrow <span class="chant">（Forget tomorrow）</span></p>
+                        <p>Bring that sing along! <span class="chant">（That sing along!）</span></p>
+                        <p>We're never solo <span class="chant">（Never solo）</span></p>
+                        <p>Baby, I can't sing alone</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>멍하니 스크롤을 넘길 동안</p>
+                        <p>야금야금 도둑맞던 시간 <span class="chant">（Hey!）</span></p>
+                        <p>phone keeps buzzing but no rushing</p>
+                        <p>빽빽한 삶에 빈틈을 줘</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>다들 가끔 그럴 때 있잖아</p>
+                        <p>자기 전 품! 하고 떠올린 상상</p>
+                        <p>이제 현실로 옮겨 Why not?</p>
+                        <p>미라클 모닝은 초저녁에 와</p>
+                        <p>행복까진 아니어도 <span class="chant">（Hey!）</span></p>
+                        <p>기분은 좀 낼래 <span class="chant">（Hey!）</span></p>
+                        <p>단지 오늘을 위해</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Make sing along! <span class="chant">（Make sing along!）</span></p>
+                        <p>Forget tomorrow <span class="chant">（Forget tomorrow）</span></p>
+                        <p>Bring that sing along! <span class="chant">（That sing along!）</span></p>
+                        <p>We're never solo <span class="chant">（Never solo）</span></p>
+                        <p>Now, I can't sing alone</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Look Look</p>
+                        <p>크림빛 조명, Full moon</p>
+                        <p>소원을 머금고 들숨 <span class="chant">/ 特蘇</span></p>
+                        <p>운을 떼면 노랫말을 붙여줄게</p>
+                        <p>To you - to all of us</p>
+                        <p>춤출 <span class="chant">/ 窮秋</span> 자신이 생겨</p>
+                        <p>누구도 소외될 수 없는 날</p>
+                        <p>Make sing along! <span class="chant">（～尖叫～）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Make sing along! <span class="chant">（Make sing along!）</span></p>
+                        <p>Forget tomorrow <span class="chant">（Forget tomorrow）</span></p>
+                        <p>Bring that sing along! <span class="chant">（That sing along!）</span></p>
+                        <p>We're never solo <span class="chant">（Never solo）</span></p>
+                    </div>
+                `
+            },
+            doyouremember: {
+                title: "Do You Remember",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/vTLW17DrBi8",
+                lyrics: `
+                    <div class="verse">
+                        <p>따분했던 Party</p>
+                        <p>거울 속 내게 "Am I happy?"</p>
+                        <p>표정에 쓰인 답은 "No no"</p>
+                        <p>Let's go back in, back in 돌아갈래</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>익숙한 놀이터</p>
+                        <p>창문너머 보이면 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>어쩐지 번져가는 웃음</p>
+                        <p>낯설고 익숙한 이 기분</p>
+                        <p>툭하면 넘어져 <span class="chant">（조심해 / 揪心咩）</span></p>
+                        <p>매일 다치기 바빴던</p>
+                        <p>그때가 지금보다 왠지 <span class="chant">（Hey !）</span></p>
+                        <p>마음은 더 강했어 <span class="chant">（Hey ! Hey !）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>엉망이 된 Situation</p>
+                        <p>가슴이 답답한 기분</p>
+                        <p>어디든 훌쩍 떠나고 싶을 때 <span class="chant">（어디 가 / 歐低 卡）</span></p>
+                        <p>Do you remember?</p>
+                        <p>내일 걱정 따윈 몰랐던 <span class="chant">/ 母拉凍</span></p>
+                        <p>종일 온 동네를 뛰놀던 <span class="chant">/ 腿奴凍</span></p>
+                        <p>철이 없던 Childhood <span class="chant">（Hey !）</span></p>
+                        <p>Let's go back in, back in 그리워 가끔</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>떠나 빌딩 숲의 밖으로 <span class="chant">/ 趴顆嚕</span></p>
+                        <p>그저 발이 닿는 그대로 <span class="chant">/ ㄎ dae嚕</span></p>
+                        <p>느껴보는 자유 <span class="chant">（Hey !）</span></p>
+                        <p>Let's go back in, back in, back in 돌아갈래</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Just going back <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>Just going back <span class="chant">（같이 가 / 卡七 卡）</span></p>
+                        <p>Go back in, back in, back in</p>
+                        <p>잠깐 고개를 들어 <span class="chant">/ 特樓</span></p>
+                        <p>파란 하늘을 보면 <span class="chant">/ 噗myeon</span></p>
+                        <p>잊고 있던 My view <span class="chant">（Hey !）</span></p>
+                        <p>되찾은 듯한 기분 <span class="chant">（Hey ! Hey !）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>꿈꾸는 게 당연했던</p>
+                        <p>어느 날 나처럼 문득</p>
+                        <p>원하는 대로 하고만 싶을 때 <span class="chant">（다 같이 / 踏 卡七）</span></p>
+                        <p>Do you remember?</p>
+                        <p>내일 걱정 따윈 몰랐던 <span class="chant">/ 母拉凍</span></p>
+                        <p>종일 온 동네를 뛰놀던 <span class="chant">/ 腿奴凍</span></p>
+                        <p>철이 없던 Childhood <span class="chant">（Hey !）</span></p>
+                        <p>Let's go back in, back in 그리워 가끔</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>떠나 빌딩 숲의 밖으로 <span class="chant">/ 趴顆嚕</span></p>
+                        <p>그저 발이 닿는 그대로 <span class="chant">/ ㄎ dae嚕</span></p>
+                        <p>느껴보는 자유 <span class="chant">（Hey !）</span></p>
+                        <p>Let's go back in, back in, back in 돌아갈래</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Just going back <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>Just going back <span class="chant">（같이 가 / 卡七 卡）</span></p>
+                        <p>Go back in, back in, back in</p>
+                        <p>어릴 적 그 때로</p>
+                        <p>돌아간 듯 I’m just wavy</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>따분했던 Party <span class="chant">（Party）</span></p>
+                        <p>거울 속 내게 "Am I happy?" <span class="chant">（Happy）</span></p>
+                        <p>표정에 쓰인 답은 "No no" <span class="chant">（No no）</span></p>
+                        <p>Let's go back in, back in 그리운 My youth</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>희미해진 기억 되돌려 <span class="chant">/ 腿凸柳</span></p>
+                        <p>덧씌우듯 채워 오늘로 <span class="chant">/ 屋能嚕</span></p>
+                        <p>즐겨보는 자유 <span class="chant">（Hey !）</span></p>
+                        <p>Let's go back in, back in, back in 놀아볼래</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Just going back <span class="chant">（도경수 / Doh Kyung soo）</span></p>
+                        <p>Just going back <span class="chant">（～尖叫～）</span></p>
+                        <p>Go back in, back in, back in</p>
+                    </div>
+                `
+            },
+            fiveminutes: {
+                title: "5 Minutes",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/RudCc6gOVvQ",
+                lyrics: `
+                    <div class="verse">
+                        <p>Five <span class="chant">（Go！Go！）</span></p>
+                        <p>숨 가쁘게 달린 시간 속 <span class="chant">（시간속 시간속 / 洗干so 洗干so）</span></p>
+                        <p>여유 하나 없던 순간 속 <span class="chant">（Go！Go！）</span></p>
+                        <p>잠시 되감아 본 하루들</p>
+                        <p>It's true</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Think about</p>
+                        <p>뺨을 스친 바람 <span class="chant">（Go！）</span></p>
+                        <p>햇살 내린 날씨에 <span class="chant">（Go！）</span></p>
+                        <p>옅은 웃음 띤 채 <span class="chant">（Go！）</span></p>
+                        <p>가벼워진 걸음 <span class="chant">（Yeah！）</span></p>
+                        <p>떠올려 본 Instant <span class="chant">（Go！）</span></p>
+                        <p>충분한 Minute <span class="chant">（Go！）</span></p>
+                        <p>쌓아가는 5분 <span class="chant">（Hey！）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>You Know When You Know When You 하루의 틈에</p>
+                        <p>You Know When You Know When You 채우는 Yourself</p>
+                        <p>You Know When You Know When You can be happy</p>
+                        <p>For you 천천히 모아본 5분</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>You Know When You Know When You 고갤 들은 채</p>
+                        <p>You Know When You Know When You 하늘을 볼 때</p>
+                        <p>You Know When You Know When You can be free yeah</p>
+                        <p>For you 마음에 새기는 5분</p>
+                        <p>태엽을 감아 You know when you know</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Five <span class="chant">（Go！Go！）</span></p>
+                        <p>벅찬 맘에 쉬고 싶은 맘 <span class="chant">（싶은 맘 싶은 맘 / 喜po媽 喜po媽）</span></p>
+                        <p>걸음 멈춰 주월 돌아봐 <span class="chant">（Go！Go！）</span></p>
+                        <p>모든 건 다 제자리인 걸</p>
+                        <p>그대로</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>하루 끝</p>
+                        <p>너를 반길 Your night <span class="chant">（Go！）</span></p>
+                        <p>긴 숨 뱉고 Just relax <span class="chant">（Go！）</span></p>
+                        <p>짧은 여유들에 <span class="chant">（Go！）</span></p>
+                        <p>편안함을 느껴 <span class="chant">（Yeah）</span></p>
+                        <p>찰나들은 금세 <span class="chant">（Go！）</span></p>
+                        <p>시간이 된 채 <span class="chant">（Go！）</span></p>
+                        <p>맘을 가득 채워 <span class="chant">（Hey！）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>You Know When You Know When You 하루의 틈에</p>
+                        <p>You Know When You Know When You 채우는 Yourself</p>
+                        <p>You Know When You Know When You can be happy</p>
+                        <p>For you 천천히 모아본 5분</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>You Know When You Know When You 고갤 들은 채</p>
+                        <p>You Know When You Know When You 하늘을 볼 때</p>
+                        <p>You Know When You Know When You can be free yeah</p>
+                        <p>For you 마음에 새기는 5분</p>
+                        <p>태엽을 감아 You know when you know</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>순간을 더욱더 <span class="chant">（소중히 / 蘇囧he）</span></p>
+                        <p>주어진 하루를 <span class="chant">（온전히 / 溫窮尼）</span></p>
+                        <p>스스로에게 Now hand it</p>
+                        <p><span class="chant">（한식 중식 일식 양식 / 憨系 囧系 一系 洋系）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>You Know When You Know When You 찬란한 맘에</p>
+                        <p>You Know When You Know When You 번지는Yourself</p>
+                        <p>You Know When You Know When You can be free yeah</p>
+                        <p>For you 매일 더 새겨본 5분</p>
+                        <p>태엽을 감아 You know when you know</p>
+                    </div>
+                `
+            }
+        };
+
+        function selectSong(key, element) {
+            const data = songs[key];
+            if (!data) return;
+
+            // 1. 更新標題與歌手
+            document.getElementById('current-title').textContent = data.title;
+            document.getElementById('current-artist').textContent = data.artist;
+
+            // 2. 更新 YouTube 影片
+            document.getElementById('current-video').src = data.video;
+
+            // 3. 更新歌詞 HTML
+            document.getElementById('current-lyrics').innerHTML = data.lyrics;
+
+            // 4. 更新按鈕選中樣式
+            const buttons = document.querySelectorAll('.song-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+
+            // 5. 滾動至練習區
+            const container = document.querySelector('.song-container');
+            if (container) {
+                const topPos = container.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: topPos, behavior: 'smooth' });
+            }
+        }
+
+        // 初次進入頁面載入預設歌曲 (Mars)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-video').src = songs.mars.video;
+            document.getElementById('current-lyrics').innerHTML = songs.mars.lyrics;
+        });
+    </script>
+</body>
+</html>
