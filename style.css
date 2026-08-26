@@ -760,3 +760,128 @@ footer {
         font-size: 1.1rem;
     }
 }
+/* ============================================================
+   搶票木魚/票券祈願區塊 (放大版 + 白底質感 + Q彈敲擊動效)
+   ============================================================ */
+.muyu-section {
+    margin-bottom: 40px;
+}
+
+.muyu-card {
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-top: 5px solid var(--brand-pink, #ff4b93);
+    border-radius: 12px;
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.muyu-badge {
+    display: inline-block;
+    background-color: var(--brand-pink, #ff4b93);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.muyu-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #18181b;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.muyu-desc {
+    color: #52525b;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.muyu-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    padding: 10px 20px;
+}
+
+/* 圖片尺寸放大至 320px */
+.muyu-image {
+    width: 320px;
+    max-width: 90vw;
+    height: auto;
+    object-fit: contain;
+    transform-origin: center center;
+    filter: drop-shadow(0 8px 20px rgba(255, 75, 147, 0.35));
+    transition: transform 0.05s ease;
+}
+
+/* 點擊瞬間的 Q 彈回彈動效 */
+.muyu-image.knocked {
+    animation: muyuSquishBounce 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
+}
+
+@keyframes muyuSquishBounce {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(0.85) rotate(-3deg);
+    }
+    65% {
+        transform: scale(1.06) rotate(1.5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.muyu-counter {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #27272a;
+    font-weight: 800;
+}
+
+.muyu-counter span {
+    color: var(--brand-pink, #ff4b93);
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 1.6rem;
+    padding: 0 6px;
+}
+
+/* 浮動祈願文字與飄散動畫 */
+.muyu-floating-text {
+    position: absolute;
+    color: var(--brand-pink, #ff4b93);
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-shadow: 0 0 12px rgba(255, 75, 147, 0.5), 1px 1px 0px #ffffff;
+    pointer-events: none;
+    animation: ticketFloatUp 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+@keyframes ticketFloatUp {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(0.6);
+    }
+    40% {
+        transform: translate(-50%, -50px) scale(1.25);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -95px) scale(1);
+    }
+}

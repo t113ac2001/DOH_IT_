@@ -2,8 +2,17 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理 | DOH IT !</title>
+    
+    <!-- SEO 與社群分享 (Open Graph / Twitter Card) -->
+    <meta name="description" content="2026-2027 都敬秀巡迴演唱會 [DAY OFF] 高雄場與台北場應援項目總整理、歌曲應援練習室及搶票祈願敲敲樂！">
+    <meta property="og:title" content="2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理">
+    <meta property="og:description" content="DOH IT ! TAIWAN 應援總整理：巡演雙場次倒數、歌曲應援練習室、現場應援進度與規範。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="DOH IT! DAY OFF-06.jpg">
+    <meta name="theme-color" content="#141416">
+
     <!-- Google 字體：塗鴉手寫感英文與標準黑體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +30,7 @@
         </div>
     </header>
 
-    <!-- 應援內容總整理 -->
+    <!-- 應援內容總整理主容器 -->
     <main class="container">
         
         <!-- 巡演雙場次倒數計時器 -->
@@ -51,12 +60,12 @@
             </div>
         </section>
 
-        <!-- 練習室滿版橫幅 -->
+        <!-- 歌曲應援練習室滿版橫幅 -->
         <section class="cheer-banner-card">
             <div class="cheer-banner-content">
                 <div class="cheer-banner-badge">PRACTICE ROOM</div>
-                <h3>🎤歌曲應援練習室</h3>
-                <p>收錄 Mars、Popcorn、I Do 等歌曲！內建應援影片與歌詞，一起把應援練熟吧！</p>
+                <h3>🎤 歌曲應援練習室</h3>
+                <p>內建教學影片與空耳歌詞，一起把應援練熟吧！</p>
             </div>
             <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
         </section>
@@ -91,17 +100,33 @@
             </div>
         </div>
 
+        <!-- 搶票祈願功德木魚/票券區塊 -->
+        <section class="muyu-section">
+            <div class="muyu-card">
+                <div class="muyu-badge">TICKET PRAYER</div>
+                <h3 class="muyu-title">搶票祈願功德木魚</h3>
+                <p class="muyu-desc">狂點門票積功德！</p>
+                
+                <!-- 票券互動本體 -->
+                <div class="muyu-wrapper" onclick="knockMuyu(event)">
+                    <img src="ticket.webp" alt="搶票木魚票券" id="muyu-img" class="muyu-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'75\' font-size=\'80\'>🎟️</text></svg>'">
+                </div>
+
+                <div class="muyu-counter">
+                    今日祈願功德數：<span id="muyu-count">0</span> 次
+                </div>
+            </div>
+        </section>
+
         <!-- 注意事項規範 -->
         <section class="notice-card" id="notice">
             <div class="notice-header">
                 <span class="notice-icon">⚠️</span>
-                <h3>應援領取規範 & 注意事項</h3>
+                <h3>注意事項</h3>
             </div>
             <ul>
-                <li><strong>領取規範：</strong>所有現場應援物品皆憑當日演唱會門票或追蹤官方社群領取，數量有限，每人限領一份。</li>
-                <li><strong>禁止轉售：</strong>應援物為粉絲團隊共同心意，嚴禁任何販售、營利或轉售行為。</li>
-                <li><strong>現場禮儀：</strong>領取時請配合現場工作人員動線引導，維持場館周邊整潔與秩序。</li>
-                <li><strong>最新公告：</strong>發放進度與當日即時動態將第一時間同步於 Instagram 及 Threads 限時動態。</li>
+                <li><strong>🐧：</strong>本團隊保有相關事項最終決定權與更動權。</li>
+                <li><strong>🐧：</strong>目前本團隊尚未正式確認為此次活動應援團隊，需等主辦方審核結果。</li>
             </ul>
         </section>
 
@@ -132,8 +157,11 @@
         <p class="copyright">© 2026-2027 DOH IT ! ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <!-- 倒數計時即時計算腳本 -->
+    <!-- 互動腳本：雙場次即時倒數 + 功德木魚點擊特效 -->
     <script>
+        // ==========================================
+        // 1. 巡演雙場次動態倒數計時器
+        // ==========================================
         function updateCountdowns() {
             const now = new Date().getTime();
 
@@ -167,9 +195,58 @@
             calculate(taipeiTarget, 'tp');
         }
 
-        // 每秒即時更新
         setInterval(updateCountdowns, 1000);
         updateCountdowns();
+
+        // ==========================================
+        // 2. 搶票祈願木魚/票券點擊互動邏輯 (含本地儲存與隨機吉祥話)
+        // ==========================================
+        let muyuCount = parseInt(localStorage.getItem('dohit_muyu_count') || '0', 10);
+        document.getElementById('muyu-count').textContent = muyuCount;
+
+        const wishTexts = [
+            '座位 +1',
+            '前排 +1',
+            '搶票必中',
+            '手速 +1',
+            '一發入魂',
+        ];
+
+        function knockMuyu(e) {
+            // 累加並保存功德數
+            muyuCount++;
+            document.getElementById('muyu-count').textContent = muyuCount;
+            localStorage.setItem('dohit_muyu_count', muyuCount);
+
+            // 敲擊圖片縮放動效
+            const img = document.getElementById('muyu-img');
+            img.classList.remove('knocked');
+            void img.offsetWidth; // 強制重繪觸發動畫
+            img.classList.add('knocked');
+
+            // 建立隨機浮動祈願字樣
+            const floatText = document.createElement('div');
+            floatText.className = 'muyu-floating-text';
+            const randomWish = wishTexts[Math.floor(Math.random() * wishTexts.length)];
+            floatText.textContent = randomWish;
+
+            const wrapper = e.currentTarget;
+            const rect = wrapper.getBoundingClientRect();
+            
+            // 計算點擊或隨機飄散位置
+            const x = (e.clientX ? e.clientX - rect.left : rect.width / 2) + (Math.random() * 40 - 20);
+            const y = (e.clientY ? e.clientY - rect.top : rect.height / 2) - 10;
+
+            floatText.style.left = `${x}px`;
+            floatText.style.top = `${y}px`;
+
+            wrapper.appendChild(floatText);
+
+            // 850ms 動畫完成後移除 DOM 節點
+            setTimeout(() => {
+                floatText.remove();
+            }, 850);
+        }
     </script>
 </body>
 </html>
