@@ -24,14 +24,51 @@
     <!-- 應援內容總整理 -->
     <main class="container">
         
+        <!-- 巡演雙場次倒數計時器 -->
+        <section class="countdown-section">
+            <div class="countdown-card">
+                <div class="countdown-badge">D-DAY COUNTDOWN</div>
+                <h3 class="countdown-title">[DAY OFF] IN KAOHSIUNG</h3>
+                <p class="countdown-date">2026.12.19 - 12.20</p>
+                <div class="countdown-timer" id="timer-kaohsiung">
+                    <div class="time-box"><span class="num" id="kh-days">00</span><span class="label">DAYS</span></div>
+                    <div class="time-box"><span class="num" id="kh-hours">00</span><span class="label">HOURS</span></div>
+                    <div class="time-box"><span class="num" id="kh-mins">00</span><span class="label">MINS</span></div>
+                    <div class="time-box"><span class="num" id="kh-secs">00</span><span class="label">SECS</span></div>
+                </div>
+            </div>
+
+            <div class="countdown-card">
+                <div class="countdown-badge badge-blue">D-DAY COUNTDOWN</div>
+                <h3 class="countdown-title">[DAY OFF] IN TAIPEI</h3>
+                <p class="countdown-date">2027.03.13 - 03.14</p>
+                <div class="countdown-timer" id="timer-taipei">
+                    <div class="time-box"><span class="num" id="tp-days">00</span><span class="label">DAYS</span></div>
+                    <div class="time-box"><span class="num" id="tp-hours">00</span><span class="label">HOURS</span></div>
+                    <div class="time-box"><span class="num" id="tp-mins">00</span><span class="label">MINS</span></div>
+                    <div class="time-box"><span class="num" id="tp-secs">00</span><span class="label">SECS</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 練習室滿版橫幅 -->
+        <section class="cheer-banner-card">
+            <div class="cheer-banner-content">
+                <div class="cheer-banner-badge">PRACTICE ROOM</div>
+                <h3>🎤歌曲應援練習室</h3>
+                <p>收錄 Mars、Popcorn、I Do 等歌曲！內建應援影片與歌詞，一起把應援練熟吧！</p>
+            </div>
+            <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
+        </section>
+        
+        <!-- 高雄場應援區塊 -->
         <div class="section-title-box">
-            <span class="badge-red">[DAY OFF] IN KAOHSIUNG 12/19-12/20
-            </span>
+            <span class="badge-red">[DAY OFF] IN KAOHSIUNG 12/19-12/20</span>
             <h2>高雄場應援項目總覽</h2>
         </div>
         
+        <!-- 應援卡片網格 -->
         <div class="card-grid">
-            <!-- 應援卡片 1 -->
             <div class="card card-rotate-left">
                 <span class="card-tag tag-pink">應援</span>
                 <h3>尚未公開敬請期待！</h3>
@@ -39,42 +76,32 @@
                 <a href="#notice" class="card-btn btn-pink">尚未公開敬請期待！</a>
             </div>
 
-            <!-- 應援卡片 2 -->
             <div class="card card-rotate-right">
                 <span class="card-tag tag-red">應援</span>
-                 <h3>尚未公開敬請期待！</h3>
+                <h3>尚未公開敬請期待！</h3>
                 <p><strong>地點：</strong>高雄</p>
-                <a href="#notice" class="card-btn btn-pink">尚未公開敬請期待！</a>
+                <a href="#notice" class="card-btn btn-red">尚未公開敬請期待！</a>
             </div>
 
-            <!-- 應援卡片 3 -->
             <div class="card card-rotate-center">
                 <span class="card-tag tag-white">應援</span>
                 <h3>尚未公開敬請期待！</h3>
                 <p><strong>地點：</strong>高雄</p>
-                <a href="#notice" class="card-btn btn-pink">尚未公開敬請期待！</a>
+                <a href="#notice" class="card-btn btn-dark">尚未公開敬請期待！</a>
             </div>
-            
-         <!-- 滿版長方形：歌曲應援練習專區入口 -->
-        <section class="cheer-banner-card">
-            <div class="cheer-banner-content">
-                <div class="cheer-banner-badge">PRACTICE ROOM</div>
-                <h3>🎤 演唱會歌曲應援練習室</h3>
-                <p>收錄 Mars、Popcorn、I Do 等歌曲！內建應援影片與歌詞，進場前一起把應援練熟吧！</p>
-            </div>
-            <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
-        </section>
-
         </div>
 
-        <!-- 注意事項 -->
+        <!-- 注意事項規範 -->
         <section class="notice-card" id="notice">
             <div class="notice-header">
                 <span class="notice-icon">⚠️</span>
-                <h3>注意事項</h3>
+                <h3>應援領取規範 & 注意事項</h3>
             </div>
             <ul>
-                <li><strong>...</strong>...</li>
+                <li><strong>領取規範：</strong>所有現場應援物品皆憑當日演唱會門票或追蹤官方社群領取，數量有限，每人限領一份。</li>
+                <li><strong>禁止轉售：</strong>應援物為粉絲團隊共同心意，嚴禁任何販售、營利或轉售行為。</li>
+                <li><strong>現場禮儀：</strong>領取時請配合現場工作人員動線引導，維持場館周邊整潔與秩序。</li>
+                <li><strong>最新公告：</strong>發放進度與當日即時動態將第一時間同步於 Instagram 及 Threads 限時動態。</li>
             </ul>
         </section>
 
@@ -102,8 +129,47 @@
             </a>
         </div>
         
-        <p class="copyright">2026-2027 DOH IT !</p>
+        <p class="copyright">© 2026-2027 DOH IT ! ALL RIGHTS RESERVED.</p>
     </footer>
 
+    <!-- 倒數計時即時計算腳本 -->
+    <script>
+        function updateCountdowns() {
+            const now = new Date().getTime();
+
+            // 設定高雄場 (2026/12/19 18:00) 與台北場 (2027/03/13 18:00) 目標時間
+            const kaohsiungTarget = new Date('2026-12-19T18:00:00+08:00').getTime();
+            const taipeiTarget = new Date('2027-03-13T18:00:00+08:00').getTime();
+
+            function calculate(target, prefix) {
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    document.getElementById(prefix + '-days').textContent = '00';
+                    document.getElementById(prefix + '-hours').textContent = '00';
+                    document.getElementById(prefix + '-mins').textContent = '00';
+                    document.getElementById(prefix + '-secs').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById(prefix + '-days').textContent = String(days).padStart(2, '0');
+                document.getElementById(prefix + '-hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById(prefix + '-mins').textContent = String(mins).padStart(2, '0');
+                document.getElementById(prefix + '-secs').textContent = String(secs).padStart(2, '0');
+            }
+
+            calculate(kaohsiungTarget, 'kh');
+            calculate(taipeiTarget, 'tp');
+        }
+
+        // 每秒即時更新
+        setInterval(updateCountdowns, 1000);
+        updateCountdowns();
+    </script>
 </body>
 </html>

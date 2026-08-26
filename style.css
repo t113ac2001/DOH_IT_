@@ -112,6 +112,98 @@ body {
 }
 
 /* ============================================================
+   雙場次巡演倒數計時器 (Dual Tour Countdown)
+   ============================================================ */
+.countdown-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 45px;
+}
+
+.countdown-card {
+    background: linear-gradient(145deg, #1c1c20 0%, #24242b 100%);
+    border: 2px solid var(--border-dark);
+    border-top: 4px solid var(--brand-pink);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s ease;
+}
+
+.countdown-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-pink);
+}
+
+.countdown-badge {
+    display: inline-block;
+    background-color: var(--brand-pink);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.countdown-badge.badge-blue {
+    background-color: #3b82f6;
+}
+
+.countdown-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.countdown-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.time-box {
+    background-color: #121214;
+    border: 1px solid #33333a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    min-width: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-box .num {
+    font-family: 'Permanent Marker', monospace, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    text-shadow: 0 0 10px rgba(255, 75, 147, 0.4);
+}
+
+.time-box .label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* ============================================================
    剪貼卡片排版 (Card Grid)
    ============================================================ */
 .card-grid {
@@ -198,6 +290,7 @@ body {
    滿版長方形：歌曲應援練習入口橫幅
    ============================================================ */
 .cheer-banner-card {
+    width: 100%;
     background: linear-gradient(135deg, #1c1c20 0%, #292930 100%);
     border: 2px solid var(--border-dark);
     border-left: 6px solid var(--brand-pink);
@@ -208,8 +301,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 25px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    box-sizing: border-box;
 }
 
 .cheer-banner-card:hover {
@@ -621,6 +713,15 @@ footer {
    手機版響應式微調 (Responsive)
    ============================================================ */
 @media (max-width: 768px) {
+    .hero {
+        min-height: 380px;
+        padding: 40px 16px;
+    }
+
+    .hero-overlay {
+        padding: 20px;
+    }
+
     .cheer-banner-card {
         flex-direction: column;
         align-items: flex-start;
@@ -631,6 +732,20 @@ footer {
         width: 100%;
         text-align: center;
         margin-top: 10px;
+    }
+
+    .countdown-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .time-box {
+        min-width: 52px;
+        padding: 8px 10px;
+    }
+
+    .time-box .num {
+        font-size: 1.3rem;
     }
 
     .song-title {
