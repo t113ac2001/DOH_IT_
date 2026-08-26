@@ -761,20 +761,30 @@ footer {
     }
 }
 /* ============================================================
-   搶票木魚/票券祈願區塊 (放大版 + 白底質感 + Q彈敲擊動效)
+   搶票木魚/票券祈願區塊 (全裝置自適應置中版)
    ============================================================ */
 .muyu-section {
+    width: 100%;
     margin-bottom: 40px;
+    box-sizing: border-box;
 }
 
+/* 1. 卡片外框：加入 overflow-hidden 避免飄字或圖片撐破版面 */
 .muyu-card {
     background: #ffffff;
     border: 2px solid #ffffff;
     border-top: 5px solid var(--brand-pink, #ff4b93);
     border-radius: 12px;
-    padding: 32px 20px;
+    padding: 30px 16px; /* 縮小左右內距避免小螢幕擠壓 */
     text-align: center;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
 }
 
 .muyu-badge {
@@ -802,30 +812,42 @@ footer {
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 15px;
+    padding: 0 10px;
+    line-height: 1.4;
 }
 
+/* 2. 互動外層包裹區：強制居中與相對定位 */
 .muyu-wrapper {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    padding: 10px 20px;
+    width: 100%;
+    max-width: 340px;
+    padding: 10px 0;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-/* 圖片尺寸放大至 320px */
+/* 3. 圖片尺寸：電腦版上限 300px，手機版隨螢幕寬度自動等比縮放 */
 .muyu-image {
-    width: 320px;
-    max-width: 90vw;
+    width: 100%;
+    max-width: 280px; /* 電腦與平板上的最適大尺寸 */
     height: auto;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
     transform-origin: center center;
-    filter: drop-shadow(0 8px 20px rgba(255, 75, 147, 0.35));
+    filter: drop-shadow(0 8px 18px rgba(255, 75, 147, 0.35));
     transition: transform 0.05s ease;
 }
 
-/* 點擊瞬間的 Q 彈回彈動效 */
+/* 4. Q 彈敲擊回彈動效 */
 .muyu-image.knocked {
     animation: muyuSquishBounce 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
 }
@@ -846,7 +868,7 @@ footer {
 }
 
 .muyu-counter {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 1rem;
     color: #27272a;
     font-weight: 800;
@@ -859,11 +881,11 @@ footer {
     padding: 0 6px;
 }
 
-/* 浮動祈願文字與飄散動畫 */
+/* 5. 浮動祈願文字與飄散動畫 */
 .muyu-floating-text {
     position: absolute;
     color: var(--brand-pink, #ff4b93);
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem); /* 字體依螢幕動態調整 */
     font-weight: 900;
     text-shadow: 0 0 12px rgba(255, 75, 147, 0.5), 1px 1px 0px #ffffff;
     pointer-events: none;
@@ -878,10 +900,25 @@ footer {
         transform: translate(-50%, 0) scale(0.6);
     }
     40% {
-        transform: translate(-50%, -50px) scale(1.25);
+        transform: translate(-50%, -45px) scale(1.2);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -95px) scale(1);
+        transform: translate(-50%, -85px) scale(1);
+    }
+}
+
+/* ============================================================
+   手機版響應式額外保障
+   ============================================================ */
+@media (max-width: 480px) {
+    .muyu-card {
+        padding: 24px 12px;
+    }
+    .muyu-image {
+        max-width: 230px; /* 針對較窄的小螢幕手機微調 */
+    }
+    .muyu-title {
+        font-size: 1.3rem;
     }
 }
