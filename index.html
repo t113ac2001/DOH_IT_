@@ -6,7 +6,7 @@
     <title>2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理 | DOH IT !</title>
     
     <!-- SEO 與社群分享 (Open Graph / Twitter Card) -->
-    <meta name="description" content="2026-2027 都敬秀巡迴演唱會 [DAY OFF] 高雄場與台北場應援項目總整理、歌曲應援練習室及搶票祈願敲敲樂！">
+    <meta name="description" content="2026-2027 都敬秀巡迴演唱會 [DAY OFF] 高雄場與台北場應援項目總整理、歌曲應援練習室及祈願搶票木魚！">
     <meta property="og:title" content="2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理">
     <meta property="og:description" content="DOH IT ! TAIWAN 應援總整理：巡演雙場次倒數、歌曲應援練習室、現場應援進度與規範。">
     <meta property="og:type" content="website">
@@ -68,6 +68,15 @@
                 <p>內建教學影片與空耳歌詞，一起把應援練熟吧！</p>
             </div>
             <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
+        </section>
+        <!-- 🎶 全場大合唱教學橫幅 (新增) -->
+        <section class="cheer-banner-card sing-banner-card">
+            <div class="cheer-banner-content">
+                <div class="cheer-banner-badge badge-blue">SING ALONG TOGETHER</div>
+                <h3>🎶 大合唱練習室</h3>
+                <p>演唱會大合唱歌曲，附上歌韓文歌詞與中文空耳！</p>
+            </div>
+            <a href="sing.html" class="cheer-banner-btn btn-blue">coming soon... →</a>
         </section>
         
         <!-- 高雄場應援區塊 -->
@@ -199,7 +208,7 @@
         updateCountdowns();
 
         // ==========================================
-        // 2. 搶票祈願木魚/票券點擊互動邏輯 (含本地儲存與隨機吉祥話)
+        // 2. 搶票祈願木魚/票券點擊互動
         // ==========================================
         let muyuCount = parseInt(localStorage.getItem('dohit_muyu_count') || '0', 10);
         document.getElementById('muyu-count').textContent = muyuCount;

@@ -922,3 +922,23 @@ footer {
         font-size: 1.3rem;
     }
 }
+/* ============================================================
+   大合唱專用樣式 (Sing Along Custom Styles)
+   ============================================================ */
+.sing-banner-card {
+    border-left: 6px solid #3b82f6;
+}
+
+.sing-banner-card:hover {
+    border-color: #3b82f6;
+}
+
+.cheer-banner-btn.btn-blue {
+    background-color: #3b82f6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+}
+
+.cheer-banner-btn.btn-blue:hover {
+    background-color: #2563eb;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
