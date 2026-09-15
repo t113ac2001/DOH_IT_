@@ -1,5 +1,5 @@
 /* ============================================================
-   全局重設與調色盤 (深灰底 + 亮粉 + 亮紅剪貼風)
+   1. 全局重設與調色盤 (深灰底 + 亮粉 + 亮紅剪貼風)
    ============================================================ */
 :root {
     --bg-dark: #141416;         /* 極深灰背景 */
@@ -27,59 +27,172 @@ body {
 }
 
 /* ============================================================
-   首頁主視覺橫幅 (Hero Banner)
+   2. 首頁主視覺橫幅 (淺灰紙質剪貼風 + 手繪星星)
    ============================================================ */
 .hero {
-    background: #18181b url('DOH IT! DAY OFF-06.jpg') no-repeat center top;
-    background-size: cover;
-    min-height: 480px;
+    position: relative;
+    /* 淺灰色紙質手感底色 + 柔和噪點漸層 */
+    background: #e5e3dc linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(210,206,198,0.5) 100%);
+    min-height: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
     padding: 60px 20px;
-    border-bottom: 4px solid var(--brand-pink);
+    border-bottom: 5px solid #141416;
+    overflow: hidden;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.08);
 }
 
-.hero-overlay {
-    background: rgba(18, 18, 20, 0.78);
-    padding: 30px 40px;
-    border-radius: 16px;
-    border: 2px dashed rgba(255, 75, 147, 0.5);
-    max-width: 800px;
-    backdrop-filter: blur(4px);
+.hero-paper-container {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
 }
 
+/* 頂部巡演副標題 */
 .tour-sub {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: clamp(0.85rem, 2.5vw, 1.15rem);
+    font-weight: 900;
     letter-spacing: 2px;
-    color: #e4e4e7;
+    color: #1a1a1c;
     margin-bottom: 12px;
-}
-
-.tour-main-title {
-    font-family: 'Permanent Marker', 'Noto Sans TC', cursive;
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    font-weight: 900;
-    color: #ffffff;
-    text-shadow: 4px 4px 0px var(--brand-pink), 8px 8px 0px var(--brand-red);
-    line-height: 1.1;
-    transform: rotate(-3deg);
-    margin: 10px 0 20px 0;
-}
-
-.tour-location {
-    font-size: 1.1rem;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: var(--brand-pink);
     text-transform: uppercase;
 }
 
+/* 主標題 DOH IT! 手撕剪紙錯位風格 */
+.tour-main-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(3.8rem, 13vw, 7.2rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin: 15px 0 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* DOH：白底黑邊 + 俐落立體陰影 */
+.word-doh {
+    display: inline-block;
+    color: #ffffff;
+    -webkit-text-stroke: 3px #141416;
+    text-shadow: 
+        5px 5px 0px #141416, 
+        8px 8px 0px rgba(255, 75, 147, 0.9);
+    transform: rotate(-6deg);
+}
+
+/* IT!：亮紅與粉色爆發感陰影 */
+.word-it {
+    display: inline-block;
+    color: #ffffff;
+    -webkit-text-stroke: 3px #141416;
+    text-shadow: 
+        5px 5px 0px #141416, 
+        8px 8px 0px #e62b2b;
+    transform: rotate(4deg);
+    position: relative;
+}
+
+/* 底部場次地點：黑色塗鴉風格 */
+.tour-location {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #141416;
+    text-transform: uppercase;
+    display: inline-block;
+    border-top: 2px dashed #141416;
+    border-bottom: 2px dashed #141416;
+    padding: 4px 18px;
+    transform: rotate(-1deg);
+}
+
 /* ============================================================
-   內容容器與標題
+   3. 手繪小星星裝飾 (Paper Stars)
+   ============================================================ */
+.paper-star {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    font-family: 'Permanent Marker', sans-serif;
+    animation: starPulse 3s ease-in-out infinite alternate;
+}
+
+.star-1 {
+    top: 15%;
+    left: 8%;
+    font-size: 1.8rem;
+    color: var(--brand-pink);
+    transform: rotate(-15deg);
+}
+
+.star-2 {
+    top: 25%;
+    left: 20%;
+    font-size: 1.2rem;
+    color: #141416;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    top: 20%;
+    right: 18%;
+    font-size: 1.5rem;
+    color: var(--brand-pink);
+    animation-delay: 1.2s;
+}
+
+.star-4 {
+    bottom: 20%;
+    right: 10%;
+    font-size: 1.4rem;
+    color: #e62b2b;
+    animation-delay: 0.8s;
+}
+
+.star-5 {
+    bottom: 18%;
+    left: 14%;
+    font-size: 1.2rem;
+    color: #141416;
+    animation-delay: 1.5s;
+}
+
+.star-shooting {
+    top: 12%;
+    right: 28%;
+    font-size: 2rem;
+    transform: rotate(-10deg);
+}
+
+.star-sparkle {
+    top: 55%;
+    right: 32%;
+    font-size: 2.2rem;
+    color: var(--brand-pink);
+    transform: rotate(20deg);
+    animation: sparkleSpin 4s linear infinite;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+    100% { transform: scale(1.15) rotate(10deg); opacity: 1; }
+}
+
+@keyframes sparkleSpin {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+/* ============================================================
+   4. 內容容器與標題
    ============================================================ */
 .container {
     max-width: 1050px;
@@ -112,7 +225,7 @@ body {
 }
 
 /* ============================================================
-   雙場次巡演倒數計時器 (Dual Tour Countdown)
+   5. 雙場次巡演倒數計時器 (Dual Tour Countdown)
    ============================================================ */
 .countdown-section {
     display: grid;
@@ -204,7 +317,244 @@ body {
 }
 
 /* ============================================================
-   剪貼卡片排版 (Card Grid)
+   6. 搶票木魚/票券祈願區塊 (全裝置自適應置中版)
+   ============================================================ */
+.muyu-section {
+    width: 100%;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.muyu-card {
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-top: 5px solid var(--brand-pink);
+    border-radius: 12px;
+    padding: 30px 16px;
+    text-align: center;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.muyu-badge {
+    display: inline-block;
+    background-color: var(--brand-pink);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.muyu-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #18181b;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.muyu-desc {
+    color: #52525b;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    line-height: 1.4;
+}
+
+.muyu-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    width: 100%;
+    max-width: 340px;
+    padding: 10px 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.muyu-image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transform-origin: center center;
+    filter: drop-shadow(0 8px 18px rgba(255, 75, 147, 0.35));
+    transition: transform 0.05s ease;
+}
+
+.muyu-image.knocked {
+    animation: muyuSquishBounce 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
+}
+
+@keyframes muyuSquishBounce {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(0.85) rotate(-3deg);
+    }
+    65% {
+        transform: scale(1.06) rotate(1.5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.muyu-counter {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: #27272a;
+    font-weight: 800;
+}
+
+.muyu-counter span {
+    color: var(--brand-pink);
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 1.6rem;
+    padding: 0 6px;
+}
+
+.muyu-floating-text {
+    position: absolute;
+    color: var(--brand-pink);
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 900;
+    text-shadow: 0 0 12px rgba(255, 75, 147, 0.5), 1px 1px 0px #ffffff;
+    pointer-events: none;
+    animation: ticketFloatUp 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+@keyframes ticketFloatUp {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(0.6);
+    }
+    40% {
+        transform: translate(-50%, -45px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -85px) scale(1);
+    }
+}
+
+/* ============================================================
+   7. 滿版長方形：歌曲應援 & 大合唱練習入口橫幅
+   ============================================================ */
+.cheer-banner-card {
+    width: 100%;
+    background: linear-gradient(135deg, #1c1c20 0%, #292930 100%);
+    border: 2px solid var(--border-dark);
+    border-left: 6px solid var(--brand-pink);
+    border-radius: 8px;
+    padding: 30px 35px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cheer-banner-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-pink);
+}
+
+.cheer-banner-badge {
+    display: inline-block;
+    background-color: var(--brand-pink);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.cheer-banner-badge.badge-blue {
+    background-color: #3b82f6;
+}
+
+.cheer-banner-content h3 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.cheer-banner-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.cheer-banner-btn {
+    flex-shrink: 0;
+    background-color: var(--brand-pink);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 75, 147, 0.35);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.cheer-banner-btn:hover {
+    background-color: #ff2a7e;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 75, 147, 0.5);
+}
+
+/* 大合唱專用樣式微調 */
+.sing-banner-card {
+    border-left: 6px solid #3b82f6;
+    margin-bottom: 40px;
+}
+
+.sing-banner-card:hover {
+    border-color: #3b82f6;
+}
+
+.cheer-banner-btn.btn-blue {
+    background-color: #3b82f6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+}
+
+.cheer-banner-btn.btn-blue:hover {
+    background-color: #2563eb;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* ============================================================
+   8. 剪貼卡片排版 (Card Grid)
    ============================================================ */
 .card-grid {
     display: grid;
@@ -287,76 +637,7 @@ body {
 .card-btn:hover { opacity: 0.9; }
 
 /* ============================================================
-   滿版長方形：歌曲應援練習入口橫幅
-   ============================================================ */
-.cheer-banner-card {
-    width: 100%;
-    background: linear-gradient(135deg, #1c1c20 0%, #292930 100%);
-    border: 2px solid var(--border-dark);
-    border-left: 6px solid var(--brand-pink);
-    border-radius: 8px;
-    padding: 30px 35px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    box-sizing: border-box;
-}
-
-.cheer-banner-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--brand-pink);
-}
-
-.cheer-banner-badge {
-    display: inline-block;
-    background-color: var(--brand-pink);
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    padding: 3px 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
-.cheer-banner-content h3 {
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.cheer-banner-content p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.cheer-banner-btn {
-    flex-shrink: 0;
-    background-color: var(--brand-pink);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 800;
-    padding: 14px 28px;
-    border-radius: 6px;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(255, 75, 147, 0.35);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-
-.cheer-banner-btn:hover {
-    background-color: #ff2a7e;
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 75, 147, 0.5);
-}
-
-/* ============================================================
-   注意事項區塊 (Notice Section)
+   9. 注意事項區塊 (Notice Section)
    ============================================================ */
 .notice-card {
     background-color: var(--bg-card);
@@ -400,7 +681,7 @@ body {
 }
 
 /* ============================================================
-   頁尾社群專區 (Footer Social Buttons)
+   10. 頁尾社群專區 (Footer Social Buttons)
    ============================================================ */
 footer {
     margin-top: 80px;
@@ -475,7 +756,7 @@ footer {
 }
 
 /* ============================================================
-   歌曲應援練習頁專用樣式 (Cheer Practice Room Styles)
+   11. 歌曲應援/大合唱練習頁專用樣式 (Practice Room Styles)
    ============================================================ */
 .song-page-body {
     background-color: #121214;
@@ -710,16 +991,12 @@ footer {
 }
 
 /* ============================================================
-   手機版響應式微調 (Responsive)
+   12. 響應式排版 (Responsive Media Queries)
    ============================================================ */
 @media (max-width: 768px) {
     .hero {
-        min-height: 380px;
+        min-height: 360px;
         padding: 40px 16px;
-    }
-
-    .hero-overlay {
-        padding: 20px;
     }
 
     .cheer-banner-card {
@@ -760,185 +1037,17 @@ footer {
         font-size: 1.1rem;
     }
 }
-/* ============================================================
-   搶票木魚/票券祈願區塊 (全裝置自適應置中版)
-   ============================================================ */
-.muyu-section {
-    width: 100%;
-    margin-bottom: 40px;
-    box-sizing: border-box;
-}
 
-/* 1. 卡片外框：加入 overflow-hidden 避免飄字或圖片撐破版面 */
-.muyu-card {
-    background: #ffffff;
-    border: 2px solid #ffffff;
-    border-top: 5px solid var(--brand-pink, #ff4b93);
-    border-radius: 12px;
-    padding: 30px 16px; /* 縮小左右內距避免小螢幕擠壓 */
-    text-align: center;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    overflow: hidden;
-    position: relative;
-}
-
-.muyu-badge {
-    display: inline-block;
-    background-color: var(--brand-pink, #ff4b93);
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    padding: 4px 14px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-}
-
-.muyu-title {
-    font-size: 1.45rem;
-    font-weight: 900;
-    color: #18181b;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-}
-
-.muyu-desc {
-    color: #52525b;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    padding: 0 10px;
-    line-height: 1.4;
-}
-
-/* 2. 互動外層包裹區：強制居中與相對定位 */
-.muyu-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    width: 100%;
-    max-width: 340px;
-    padding: 10px 0;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-/* 3. 圖片尺寸：電腦版上限 300px，手機版隨螢幕寬度自動等比縮放 */
-.muyu-image {
-    width: 100%;
-    max-width: 280px; /* 電腦與平板上的最適大尺寸 */
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    transform-origin: center center;
-    filter: drop-shadow(0 8px 18px rgba(255, 75, 147, 0.35));
-    transition: transform 0.05s ease;
-}
-
-/* 4. Q 彈敲擊回彈動效 */
-.muyu-image.knocked {
-    animation: muyuSquishBounce 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
-}
-
-@keyframes muyuSquishBounce {
-    0% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(0.85) rotate(-3deg);
-    }
-    65% {
-        transform: scale(1.06) rotate(1.5deg);
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-.muyu-counter {
-    margin-top: 12px;
-    font-size: 1rem;
-    color: #27272a;
-    font-weight: 800;
-}
-
-.muyu-counter span {
-    color: var(--brand-pink, #ff4b93);
-    font-family: 'Permanent Marker', sans-serif;
-    font-size: 1.6rem;
-    padding: 0 6px;
-}
-
-/* 5. 浮動祈願文字與飄散動畫 */
-.muyu-floating-text {
-    position: absolute;
-    color: var(--brand-pink, #ff4b93);
-    font-size: clamp(1.2rem, 4vw, 1.5rem); /* 字體依螢幕動態調整 */
-    font-weight: 900;
-    text-shadow: 0 0 12px rgba(255, 75, 147, 0.5), 1px 1px 0px #ffffff;
-    pointer-events: none;
-    animation: ticketFloatUp 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    white-space: nowrap;
-    z-index: 10;
-}
-
-@keyframes ticketFloatUp {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, 0) scale(0.6);
-    }
-    40% {
-        transform: translate(-50%, -45px) scale(1.2);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -85px) scale(1);
-    }
-}
-
-/* ============================================================
-   手機版響應式額外保障
-   ============================================================ */
 @media (max-width: 480px) {
     .muyu-card {
         padding: 24px 12px;
     }
+    
     .muyu-image {
-        max-width: 230px; /* 針對較窄的小螢幕手機微調 */
+        max-width: 230px;
     }
+    
     .muyu-title {
         font-size: 1.3rem;
     }
-}
-/* ============================================================
-   大合唱專用樣式 (Sing Along Custom Styles)
-   ============================================================ */
-.sing-banner-card {
-    border-left: 6px solid #3b82f6;
-}
-
-.sing-banner-card:hover {
-    border-color: #3b82f6;
-}
-
-.cheer-banner-btn.btn-blue {
-    background-color: #3b82f6;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
-}
-
-.cheer-banner-btn.btn-blue:hover {
-    background-color: #2563eb;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
