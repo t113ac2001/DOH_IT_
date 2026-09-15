@@ -46,7 +46,7 @@ body {
 
 .hero-paper-container {
     position: relative;
-    z-index: 2;
+    z-index: 5; /* 確保文字層級高於背景星星 */
     max-width: 820px;
 }
 
@@ -113,7 +113,7 @@ body {
 }
 
 /* ============================================================
-   3. 手繪小星星裝飾 (Paper Stars)
+   3. 手繪小星星裝飾 (Paper Stars) - 電腦版預設
    ============================================================ */
 .paper-star {
     position: absolute;
@@ -997,6 +997,59 @@ footer {
     .hero {
         min-height: 360px;
         padding: 40px 16px;
+    }
+
+    /* 確保手機版文字容器永遠高於星星 */
+    .hero-paper-container {
+        position: relative;
+        z-index: 5;
+    }
+
+    /* 手機版：星星縮小並貼近四角邊緣，徹底避開中央文字 */
+    .star-1 {
+        top: 6%;
+        left: 4%;
+        font-size: 1.2rem;
+    }
+
+    .star-2 {
+        top: 10%;
+        left: 18%;
+        font-size: 0.9rem;
+    }
+
+    .star-3 {
+        top: 8%;
+        right: 6%;
+        font-size: 1.1rem;
+    }
+
+    .star-4 {
+        bottom: 8%;
+        right: 5%;
+        font-size: 1rem;
+    }
+
+    .star-5 {
+        bottom: 8%;
+        left: 6%;
+        font-size: 0.9rem;
+    }
+
+    /* 手機版縮小流星與芒星，並移至外圍避免重疊字體 */
+    .star-shooting {
+        top: 4%;
+        right: 22%;
+        font-size: 1.3rem;
+        opacity: 0.8;
+    }
+
+    .star-sparkle {
+        top: auto;
+        bottom: 12%;
+        right: 18%;
+        font-size: 1.3rem;
+        opacity: 0.7;
     }
 
     .cheer-banner-card {
