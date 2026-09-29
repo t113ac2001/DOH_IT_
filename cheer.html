@@ -18,7 +18,7 @@
         <span class="nav-brand">DOH IT ! TAIWAN</span>
     </nav>
 
-    <!-- 歌曲切換選單按鈕列 (8 首完整應援曲目) -->
+    <!-- 歌曲切換選單按鈕列 -->
     <div class="song-selector-bar">
         <div class="selector-container">
             <button class="song-tab-btn active" onclick="selectSong('mars', this)">Mars</button>
@@ -762,7 +762,7 @@
             }
         }
 
-        // 初次進入頁面載入預設歌曲 (Mars)
+        // 初次進入頁面載入預設歌曲
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-video').src = songs.mars.video;
             document.getElementById('current-lyrics').innerHTML = songs.mars.lyrics;

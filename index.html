@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理 | DOH IT !</title>
     
-    <!-- SEO 與社群分享 (Open Graph / Twitter Card) -->
+    <!-- 社群分享 -->
     <meta name="description" content="2026-2027 都敬秀巡迴演唱會 [DAY OFF] 高雄場與台北場應援項目總整理、歌曲應援練習室及祈願搶票木魚！">
     <meta property="og:title" content="2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] 應援總整理">
     <meta property="og:description" content="DOH IT ! TAIWAN 應援總整理：巡演雙場次倒數、歌曲應援練習室、現場應援進度與規範。">
@@ -13,7 +13,7 @@
     <meta property="og:image" content="DOH IT! DAY OFF-06.jpg">
     <meta name="theme-color" content="#141416">
 
-    <!-- Google 字體：塗鴉手寫感英文與標準黑體 -->
+    <!-- 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
@@ -21,31 +21,43 @@
 </head>
 <body>
 
-  <!-- 主視覺橫幅 (淺灰手作剪紙風 + 小星星) -->
+  <!-- 主視覺橫幅：手作撕紙拼貼龐克風 (Zine Scrapbook Style) -->
     <header class="hero">
-        <!-- 散落手繪小星星裝飾 -->
-        <span class="paper-star star-1">★</span>
-        <span class="paper-star star-2">✦</span>
-        <span class="paper-star star-3">★</span>
-        <span class="paper-star star-4">✦</span>
-        <span class="paper-star star-5">★</span>
-        <span class="paper-star star-shooting">💫</span>
-        <span class="paper-star star-sparkle">✸</span>
+        <!-- 手撕剪紙裝飾芒星與手繪元素 -->
+        <div class="deco-star deco-star-1">★</div>
+        <div class="deco-star deco-star-2">✦</div>
+        <div class="deco-star deco-star-3">★</div>
+        <div class="deco-star deco-star-4">✦</div>
+        <div class="deco-burst burst-left"></div>
+        <div class="deco-burst burst-right"></div>
 
-        <div class="hero-paper-container">
-            <h1 class="tour-sub">2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF]</h1>
-            <div class="tour-main-title">
-                <span class="word-doh">DOH</span>
-                <span class="word-it">IT!</span>
+        <div class="hero-scrapbook-stage">
+            <!-- 頂部紙膠帶標籤 -->
+            <div class="tape-badge top-tape">
+                <span class="tape-text">2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF]</span>
             </div>
-            <p class="tour-location">IN KAOHSIUNG | TAIPEI</p>
+
+            <!-- 主標題：手撕剪紙色塊字體 -->
+            <div class="scrapbook-title">
+                <div class="cutout-letter-box box-doh">
+                    <span class="paper-pin pin-left"></span>
+                    <span class="cutout-word">DOH</span>
+                </div>
+                <div class="cutout-letter-box box-it">
+                    <span class="paper-pin pin-right"></span>
+                    <span class="cutout-word">IT!</span>
+                    <span class="hand-drawn-sparkle">✸</span>
+                </div>
+            </div>
+
+            <!-- 底部斜貼巡演地點紙膠帶 -->
+            <div class="tape-badge bottom-tape">
+                <span class="tape-text">★ IN KAOHSIUNG & TAIPEI ★</span>
+            </div>
         </div>
     </header>
-
-    <!-- 應援內容總整理主容器 -->
-    <main class="container">
         
-        <!-- 巡演雙場次倒數計時器 -->
+        <!-- 倒數計時器 -->
         <section class="countdown-section">
             <div class="countdown-card">
                 <div class="countdown-badge">D-DAY COUNTDOWN</div>
@@ -72,7 +84,7 @@
             </div>
         </section>
 
-        <!-- 歌曲應援練習室滿版橫幅 -->
+        <!-- 歌曲應援練習室 -->
         <section class="cheer-banner-card">
             <div class="cheer-banner-content">
                 <div class="cheer-banner-badge">PRACTICE ROOM</div>
@@ -81,7 +93,7 @@
             </div>
             <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
         </section>
-        <!-- 🎶 全場大合唱教學橫幅 (新增) -->
+        <!-- 🎶 全場大合唱教學 -->
         <section class="cheer-banner-card sing-banner-card">
             <div class="cheer-banner-content">
                 <div class="cheer-banner-badge badge-blue">SING ALONG TOGETHER</div>
@@ -121,7 +133,7 @@
             </div>
         </div>
 
-        <!-- 搶票祈願功德木魚/票券區塊 -->
+        <!-- 搶票祈願功德木魚 -->
         <section class="muyu-section">
             <div class="muyu-card">
                 <div class="muyu-badge">TICKET PRAYER</div>
@@ -178,15 +190,12 @@
         <p class="copyright">2026-2027 DOH IT !</p>
     </footer>
 
-    <!-- 互動腳本：雙場次即時倒數 + 功德木魚點擊特效 -->
+    <!-- 雙場次即時倒數 + 功德木魚點擊特效 -->
     <script>
-        // ==========================================
-        // 1. 巡演雙場次動態倒數計時器
-        // ==========================================
+ // 1. 巡演雙場次動態倒數計時器
         function updateCountdowns() {
             const now = new Date().getTime();
 
-            // 設定高雄場 (2026/12/19 18:00) 與台北場 (2027/03/13 18:00) 目標時間
             const kaohsiungTarget = new Date('2026-12-19T18:00:00+08:00').getTime();
             const taipeiTarget = new Date('2027-03-13T18:00:00+08:00').getTime();
 
@@ -219,9 +228,7 @@
         setInterval(updateCountdowns, 1000);
         updateCountdowns();
 
-        // ==========================================
         // 2. 搶票祈願木魚/票券點擊互動
-        // ==========================================
         let muyuCount = parseInt(localStorage.getItem('dohit_muyu_count') || '0', 10);
         document.getElementById('muyu-count').textContent = muyuCount;
 
@@ -233,19 +240,15 @@
             '一發入魂',
         ];
 
-        function knockMuyu(e) {
-            // 累加並保存功德數
             muyuCount++;
             document.getElementById('muyu-count').textContent = muyuCount;
             localStorage.setItem('dohit_muyu_count', muyuCount);
 
-            // 敲擊圖片縮放動效
             const img = document.getElementById('muyu-img');
             img.classList.remove('knocked');
-            void img.offsetWidth; // 強制重繪觸發動畫
+            void img.offsetWidth;
             img.classList.add('knocked');
 
-            // 建立隨機浮動祈願字樣
             const floatText = document.createElement('div');
             floatText.className = 'muyu-floating-text';
             const randomWish = wishTexts[Math.floor(Math.random() * wishTexts.length)];
@@ -254,7 +257,6 @@
             const wrapper = e.currentTarget;
             const rect = wrapper.getBoundingClientRect();
             
-            // 計算點擊或隨機飄散位置
             const x = (e.clientX ? e.clientX - rect.left : rect.width / 2) + (Math.random() * 40 - 20);
             const y = (e.clientY ? e.clientY - rect.top : rect.height / 2) - 10;
 
@@ -262,8 +264,6 @@
             floatText.style.top = `${y}px`;
 
             wrapper.appendChild(floatText);
-
-            // 850ms 動畫完成後移除 DOM 節點
             setTimeout(() => {
                 floatText.remove();
             }, 850);
