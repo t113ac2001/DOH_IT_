@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歌曲應援練習室 | DOH IT !</title>
-    <!-- Google 字體：手寫塗鴉英文與標準無襯線體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
@@ -12,40 +11,40 @@
 </head>
 <body class="song-page-body">
 
-    <!-- 頂部導覽列 -->
     <nav class="song-nav">
         <a href="index.html" class="nav-back">← 返回應援總整理</a>
         <span class="nav-brand">DOH IT ! TAIWAN</span>
     </nav>
 
-    <!-- 歌曲切換選單按鈕列 -->
     <div class="song-selector-bar">
         <div class="selector-container">
             <button class="song-tab-btn active" onclick="selectSong('mars', this)">Mars</button>
-            <button class="song-tab-btn" onclick="selectSong('popcorn', this)">Popcorn</button>
             <button class="song-tab-btn" onclick="selectSong('ido', this)">별 떨어진다 (I Do)</button>
-            <button class="song-tab-btn" onclick="selectSong('thatsokay', this)">괜찮아도 괜찮아 (That's okay)</button>
             <button class="song-tab-btn" onclick="selectSong('rose', this)">Rose</button>
-            <button class="song-tab-btn" onclick="selectSong('singalong', this)">Sing Along</button>
             <button class="song-tab-btn" onclick="selectSong('doyouremember', this)">Do You Remember</button>
+            <button class="song-tab-btn" onclick="selectSong('popcorn', this)">Popcorn</button>
+            <button class="song-tab-btn" onclick="selectSong('guitarist', this)">Guitarist</button>
+            <button class="song-tab-btn" onclick="selectSong('thatsokay', this)">괜찮아도 괜찮아 (That's okay)</button>
+            
+            <span class="song-tab-divider">| OTHER SONGS ✦ |</span>
+
+            <button class="song-tab-btn" onclick="selectSong('singalong', this)">Sing Along</button>
             <button class="song-tab-btn" onclick="selectSong('fiveminutes', this)">5 Minutes</button>
         </div>
     </div>
 
-    <!-- 歌曲標題區 -->
     <header class="song-header">
         <span class="song-badge">DOH IT !</span>
-        <h1 class="song-title" id="current-title">Mars</h1>
+        <h1 class="song-title" id="current-title">Guitarist</h1>
         <p class="song-artist" id="current-artist">도경수 DOH KYUNG SOO</p>
     </header>
 
     <main class="song-container">
 
-        <!-- YouTube 教學影片區 -->
         <div class="video-card">
             <div class="video-wrapper">
                 <iframe id="current-video"
-                        src="https://www.youtube-nocookie.com/embed/Vr4ZzauoTbM" 
+                        src="https://www.youtube-nocookie.com/embed/5cS21AxPLYE" 
                         title="應援教學影片" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -56,7 +55,6 @@
             <p class="video-tip">建議播放影片跟著節奏與空耳大聲練習！</p>
         </div>
 
-        <!-- 應援顏色標示說明 -->
         <div class="cheer-legend-bar">
             <div class="legend-item">
                 <span class="dot dot-white"></span>
@@ -68,22 +66,110 @@
             </div>
         </div>
 
-        <!-- 滿版應援歌詞區 -->
         <section class="lyrics-sheet" id="current-lyrics">
-            <!-- 歌詞由 JavaScript 動態填入 -->
         </section>
 
     </main>
 
-    <!-- 頁尾 -->
     <footer class="song-footer">
         <a href="index.html" class="footer-back-btn">← 回到應援首頁</a>
         <p class="copyright">2026-2027 DOH IT !</p>
     </footer>
 
-    <!-- 歌曲資料庫與切換腳本 -->
     <script>
         const songs = {
+            guitarist: {
+                title: "Guitarist",
+                artist: "도경수 DOH KYUNG SOO",
+                video: "https://www.youtube-nocookie.com/embed/V3b1JrAl_1Q",
+                lyrics: `
+                    <div class="verse">
+                        <p>Melody on your lips <span class="chant"> (lips!) </span></p>
+                        <p>떨리는 숨이 흘러 들어오면 Feels like a dream</p>
+                        <p>손끝이 닿을 듯이 We make another riff</p>
+                        <p>천천히 sweep <span class="chant"> Guitarist </span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Da-ra-da da-da ra-da-ra,</p>
+                        <p>da-ra-da da-da ra-da-ra</p>
+                        <p>Da-ra-da da-da ra-da,</p>
+                        <p>da-da-ra da <span class="chant">（도경수！ / Doh Kyung soo！）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Melody on your lips</p>
+                        <p>귓가에 조금씩  <span class="chant"> (yeah~!) </span></p>
+                           <p>들려오는 순간 이 공기는 bittersweet</p>
+                        <p>난 노코멘트 널 끌어안을래 손에 감긴 채로</p>
+                        <p>We gon' pick the note</p>
+                    </div>
+
+                    <div class="verse">
+                        <p><span class="chant"> Ring around, ring around </span></p>
+                        <p>I'll play all these lines</p>
+                        <p>(I don't know what to say)</p>
+                        <p>흘려보내도 돼 That's the way</p>
+                        <p>아무렇게나 튕겨도 <span class="chant"> Fit한 어울림/Fit漢 歐五拎</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Melody on your lips <span class="chant"> (lips!) </span></p>
+                        <p>떨리는 숨이 흘러 들어오면 Feels like a dream</p>
+                        <p>손끝이 닿을 듯이 We make another riff</p>
+                        <p>천천히 sweep <span class="chant"> Guitarist </span></p>
+                    </div>
+
+                    <div class="verse">
+                     <p>Da-ra-da da-da ra-da-ra,</p>
+                        <p>da-ra-da da-da ra-da-ra</p>
+                        <p>Da-ra-da da-da ra-da,</p>
+                        <p>da-da-ra da <span class="chant">（도경수！ / Doh Kyung soo！）</span></p>
+                    </div>
+                    
+                      <div class="verse">
+                        <p>둘만의 love song, I know</p>
+                        <p>우리 둘만의 secret song, I know</p>
+                    </div>
+
+                    <div class="verse">
+                        <p><span class="chant"> (Hoo!) </span> No howling </p>
+                        <p><span class="chant"> (Hoo!) </span> 가끔씩</p>
+                        <p><span class="chant"> (Hoo!) </span>서로를 bending</p>
+                         <p>But <span class="chant"> harmonic</span></p>
+                        <p>소리 나  <span class="chant"> Wah Wah </span></p>
+                        <p>볼 때마<span class="chant">다/大 </span>  내게 딱 맞는 <span class="chant">코드/摳的</span></p>
+                        <p>Nothing matters as I'm with you</p>
+                    </div>
+
+                    <div class="verse">
+                        <p>Melody on your lips <span class="chant"> (lips!) </span></p>
+                        <p>떨리는 숨이 흘러 들어오면 Feels like a dream</p>
+                        <p>손끝이 닿을 듯이 We make another riff</p>
+                        <p>천천히 sweep <span class="chant"> Guitarist </span></p>
+                    </div>
+
+                    <div class="verse">
+                      <p>Da-ra-da da-da ra-da-ra,</p>
+                        <p>da-ra-da da-da ra-da-ra</p>
+                        <p>Da-ra-da da-da ra-da,</p>
+                        <p>da-da-ra da <span class="chant">（도경수！ / Doh Kyung soo！）</span></p>
+                    </div>
+
+                    <div class="verse">
+                        <p>둘만의 love song, I know</p>
+                        <p>우리 둘만의 secret song, I know</p>
+                    </div>
+
+                    <div class="verse">
+                        <p><span class="chant"> I'll pick you up when you're lonely </span></p>
+                        <p>말 한 줄까지 we tune all day </p>
+                        <p><span class="chant">I'll pick you up when you call me </span></p>
+                        <p>맞춘 것같이 we </p>
+                        <p>Da-ra-da-da-da-ra-da <span class="chant">（！尖叫！）</span></p>
+                    </div>
+                `
+            },
             mars: {
                 title: "Mars",
                 artist: "도경수 DOH KYUNG SOO",
@@ -193,7 +279,7 @@
 
                     <div class="verse">
                         <p>매일의 새로운 면도 <span class="chant">（도경수 / Doh Kyung soo）</span></p>
-                        <p>어느새 익숙한 면도 <span class="chant">（사랑해 / 撒郎嘿）</span></p>
+                        <p>어느새 익숙한 면도 <span class="chant">（사랑해 / 莎浪嘿）</span></p>
                         <p>사랑스럽게만 보이는 맘 당신과도 나누고 싶은 이 맘</p>
                     </div>
 
@@ -301,7 +387,7 @@
 
                     <div class="verse">
                         <p>소원 빌래? 별 떨어진다</p>
-                        <p>잠깐이라 또 놓쳤지만</p>
+                        <p>잠깐이라 Pale 또 놓쳤지만</p>
                         <p>이젠 뭐 상관없겠지</p>
                         <p>이미 눈치챘으니</p>
                         <p>원하는 건 너 하나뿐야</p>
@@ -349,7 +435,7 @@
                         <p>언제나 같은 자리</p>
                         <p>제 몫의 빛으로 환하게 비출 테니</p>
                         <p>숨기지 말고 너를 보여 줄래 편히</p>
-                         <p>네 모습 그대로 그래 <span class="chant"> 괜찮아 괜찮아 / 肯恰拿 肯恰拿 </span> 도</p>
+                         <p>네 모습 그대로 그래 <span class="chant"> 괜찮아 괜찮아 / 肯洽拿 肯洽拿 </span> 도</p>
                     </div>
 
                     <div class="verse">
@@ -385,7 +471,7 @@
                         <p>언제나 같은 자리</p>
                         <p>제 몫의 빛으로 환하게 비출 테니</p>
                         <p>숨기지 말고 너를 보여 줄래 편히</p>
-                           <p>네 모습 그대로 그래 <span class="chant"> 괜찮아 괜찮아 / 肯恰拿 肯恰拿 </span> 도</p>
+                           <p>네 모습 그대로 그래 <span class="chant"> 괜찮아 괜찮아 / 肯洽拿 肯洽拿 </span> 도</p>
                     </div>
 
                     <div class="verse">
@@ -510,7 +596,7 @@
                     <div class="verse">
                         <p>다들 가끔 그럴 때 있잖아</p>
                         <p>자기 전 품! 하고 떠올린 상상</p>
-                        <p>이제 현실로 옮겨 <span class="chant"Why not?</span></p>
+                        <p>이제 현실로 옮겨 <span class="chant">Why not?</span></p>
                         <p>미라클 모닝은 초저녁에 와</p>
                         <p>행복까진 아니어도 <span class="chant">（Hey!）</span></p>
                         <p>기분은 좀 낼래 <span class="chant">（Hey!）</span></p>
@@ -737,24 +823,17 @@
             const data = songs[key];
             if (!data) return;
 
-            // 1. 更新標題與歌手
             document.getElementById('current-title').textContent = data.title;
             document.getElementById('current-artist').textContent = data.artist;
-
-            // 2. 更新 YouTube 影片
             document.getElementById('current-video').src = data.video;
-
-            // 3. 更新歌詞 HTML
             document.getElementById('current-lyrics').innerHTML = data.lyrics;
 
-            // 4. 更新按鈕選中樣式
             const buttons = document.querySelectorAll('.song-tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             if (element) {
                 element.classList.add('active');
             }
 
-            // 5. 滾動至練習區
             const container = document.querySelector('.song-container');
             if (container) {
                 const topPos = container.getBoundingClientRect().top + window.pageYOffset - 80;
@@ -762,8 +841,7 @@
             }
         }
 
-        // 初次進入頁面載入預設歌曲
-        document.addEventListener('DOMContentLoaded', () => {
+       document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-video').src = songs.mars.video;
             document.getElementById('current-lyrics').innerHTML = songs.mars.lyrics;
         });

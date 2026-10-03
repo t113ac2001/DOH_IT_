@@ -21,9 +21,8 @@
 </head>
 <body>
 
-  <!-- 主視覺橫幅：手作撕紙拼貼龐克風 (Zine Scrapbook Style) -->
+    <!-- 主視覺橫幅：手作撕紙拼貼龐克風 (Zine Scrapbook Style) -->
     <header class="hero">
-        <!-- 手撕剪紙裝飾芒星與手繪元素 -->
         <div class="deco-star deco-star-1">★</div>
         <div class="deco-star deco-star-2">✦</div>
         <div class="deco-star deco-star-3">★</div>
@@ -32,12 +31,10 @@
         <div class="deco-burst burst-right"></div>
 
         <div class="hero-scrapbook-stage">
-            <!-- 頂部紙膠帶標籤 -->
             <div class="tape-badge top-tape">
                 <span class="tape-text">2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF]</span>
             </div>
 
-            <!-- 主標題：手撕剪紙色塊字體 -->
             <div class="scrapbook-title">
                 <div class="cutout-letter-box box-doh">
                     <span class="paper-pin pin-left"></span>
@@ -50,13 +47,15 @@
                 </div>
             </div>
 
-            <!-- 底部斜貼巡演地點紙膠帶 -->
             <div class="tape-badge bottom-tape">
                 <span class="tape-text">★ IN KAOHSIUNG & TAIPEI ★</span>
             </div>
         </div>
     </header>
         
+    <!-- 主內容區容器 -->
+    <main class="container">
+
         <!-- 倒數計時器 -->
         <section class="countdown-section">
             <div class="countdown-card">
@@ -93,12 +92,13 @@
             </div>
             <a href="cheer.html" class="cheer-banner-btn">進入練習室 →</a>
         </section>
-        <!-- 🎶 全場大合唱教學 -->
+
+        <!-- 全場大合唱教學 -->
         <section class="cheer-banner-card sing-banner-card">
             <div class="cheer-banner-content">
                 <div class="cheer-banner-badge badge-blue">SING ALONG TOGETHER</div>
                 <h3>🎶 大合唱練習室</h3>
-                <p>演唱會大合唱歌曲，附上歌韓文歌詞與中文空耳！</p>
+                <p>演唱會大合唱歌曲，附上韓文歌詞與中文空耳！</p>
             </div>
             <a href="sing.html" class="cheer-banner-btn btn-blue">coming soon... →</a>
         </section>
@@ -140,7 +140,6 @@
                 <h3 class="muyu-title">搶票祈願功德木魚</h3>
                 <p class="muyu-desc">狂點門票積功德！</p>
                 
-                <!-- 票券互動本體 -->
                 <div class="muyu-wrapper" onclick="knockMuyu(event)">
                     <img src="ticket.webp" alt="搶票木魚票券" id="muyu-img" class="muyu-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'75\' font-size=\'80\'>🎟️</text></svg>'">
                 </div>
@@ -171,17 +170,12 @@
         <p class="footer-sub">FOLLOW OUR OFFICIAL CHANNELS</p>
         
         <div class="social-links">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/doh_it.tw" target="_blank" rel="noopener noreferrer" class="social-btn btn-ig">
                 📸 Instagram (@doh_it.tw)
             </a>
-            
-            <!-- Threads -->
             <a href="https://www.threads.net/@doh_it.tw" target="_blank" rel="noopener noreferrer" class="social-btn btn-threads">
                 💬 Threads (@doh_it.tw)
             </a>
-            
-            <!-- YouTube -->
             <a href="https://youtube.com/channel/UCoHX_jn0b-IU7cwLN__FYsg" target="_blank" rel="noopener noreferrer" class="social-btn btn-yt">
                 ▶️ YouTube 頻道
             </a>
@@ -192,7 +186,7 @@
 
     <!-- 雙場次即時倒數 + 功德木魚點擊特效 -->
     <script>
- // 1. 巡演雙場次動態倒數計時器
+        // 1. 巡演雙場次動態倒數計時器
         function updateCountdowns() {
             const now = new Date().getTime();
 
@@ -240,6 +234,7 @@
             '一發入魂',
         ];
 
+        function knockMuyu(e) {
             muyuCount++;
             document.getElementById('muyu-count').textContent = muyuCount;
             localStorage.setItem('dohit_muyu_count', muyuCount);
@@ -258,7 +253,7 @@
             const rect = wrapper.getBoundingClientRect();
             
             const x = (e.clientX ? e.clientX - rect.left : rect.width / 2) + (Math.random() * 40 - 20);
-            const y = (e.clientY ? e.clientY - rect.top : rect.height / 2) - 10;
+            const y = (e.clientY ? e.clientY - rect.top : 20) - 10;
 
             floatText.style.left = `${x}px`;
             floatText.style.top = `${y}px`;

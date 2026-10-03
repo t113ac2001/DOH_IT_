@@ -1,12 +1,12 @@
-/* 1. 全局重設與調色盤 (深灰底 + 亮粉 + 亮紅剪貼風)*/
+/* 1. 全局 */
 :root {
-    --bg-dark: #141416;         /* 極深灰背景 */
-    --bg-card: #222226;         /* 卡片深灰底色 */
-    --bg-card-light: #f5f5f7;   /* 亮白灰剪紙色 */
-    --text-light: #ffffff;      /* 白色文字 */
-    --text-muted: #a1a1aa;      /* 灰階文字 */
-    --brand-pink: #ff4b93;      /* 剪貼亮粉色 */
-    --brand-red: #e62b2b;       /* 亮紅色 */
+    --bg-dark: #141416;        
+    --bg-card: #222226;         
+    --bg-card-light: #f5f5f7; 
+    --text-light: #ffffff;     
+    --text-muted: #a1a1aa;      
+    --brand-pink: #ff4b93;   
+    --brand-red: #e62b2b;    
     --border-dark: #2e2e33;
 }
 
@@ -24,12 +24,9 @@ body {
     overflow-x: hidden;
 }
 
-/* ============================================================
-   2. 首頁主視覺橫幅：極致手撕紙質拼貼風 (Zine Scrapbook Hero)
-   ============================================================ */
+/* 2. 首頁主視覺橫幅 */
 .hero {
     position: relative;
-    /* 淺灰紙質噪點質感背景 */
     background-color: #e4e2db;
     background-image: 
         radial-gradient(#cfccc2 1px, transparent 1px),
@@ -56,7 +53,7 @@ body {
     gap: 15px;
 }
 
-/* 頂部與底部紙膠帶標籤 (Washi Tape) */
+/* 頂部與底部紙膠帶標籤*/
 .tape-badge {
     display: inline-block;
     background: #141416;
@@ -93,7 +90,7 @@ body {
     text-shadow: 1px 1px 0px #000;
 }
 
-/* 主標題容器：交錯排列手撕剪紙卡片 */
+/* 主標題容器 */
 .scrapbook-title {
     display: flex;
     justify-content: center;
@@ -102,7 +99,7 @@ body {
     margin: 10px 0;
 }
 
-/* 剪紙字體色塊外盒 (Cutout Letter Box) */
+/* 剪紙字體色塊外盒 */
 .cutout-letter-box {
     position: relative;
     padding: clamp(10px, 2.5vw, 18px) clamp(22px, 4vw, 38px);
@@ -115,21 +112,21 @@ body {
     transform: scale(1.05) translateY(-4px) !important;
 }
 
-/* DOH 撕紙色塊：微黃白剪紙 + 微左旋轉 */
+/* 撕紙色塊 */
 .box-doh {
     background: #ffffff;
     transform: rotate(-4deg);
     border-radius: 4px 8px 3px 6px;
 }
 
-/* IT! 撕紙色塊：熱粉紅底色 + 微右旋轉 */
+/* 撕紙色塊 */
 .box-it {
     background: var(--brand-pink);
     transform: rotate(5deg);
     border-radius: 6px 3px 8px 4px;
 }
 
-/* 字體本身：粗獷手寫 + 飽滿陰影 */
+/* 字體 */
 .cutout-word {
     font-family: 'Permanent Marker', cursive;
     font-size: clamp(3.8rem, 12vw, 6.8rem);
@@ -149,7 +146,7 @@ body {
     text-shadow: 4px 4px 0px #141416;
 }
 
-/* 固定紙片的小圖釘 / 貼紙細節 */
+/* 固定紙片細節 */
 .paper-pin {
     position: absolute;
     width: 10px;
@@ -162,7 +159,7 @@ body {
 .pin-left { left: 10px; }
 .pin-right { right: 10px; }
 
-/* IT! 旁邊的爆炸粉芒星 */
+/* 爆炸星 */
 .hand-drawn-sparkle {
     position: absolute;
     right: -24px;
@@ -175,9 +172,7 @@ body {
     pointer-events: none;
 }
 
-/* ============================================================
-   3. 手繪背景裝飾 (Deco Elements)
-   ============================================================ */
+/* 3. 手繪背景裝飾 */
 .deco-star {
     position: absolute;
     user-select: none;
@@ -220,7 +215,7 @@ body {
     animation-delay: 0.4s;
 }
 
-/* 背景兩側的手撕剪紙塊剪影 (Paper Bursts) */
+/* 手撕剪紙塊剪影 */
 .deco-burst {
     position: absolute;
     width: 140px;
@@ -258,7 +253,7 @@ body {
     100% { transform: scale(1) rotate(360deg); }
 }
 
-/* 3. 手繪小星星裝飾 (Paper Stars) - 電腦版預設 */
+/* 3. 小星星 */
 .paper-star {
     position: absolute;
     user-select: none;
@@ -366,9 +361,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* ============================================================
-   5. 雙場次巡演倒數計時器 (Dual Tour Countdown)
-   ============================================================ */
+/* 5. 雙場次巡演倒數計時器 (Dual Tour Countdown) */
 .countdown-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -458,7 +451,7 @@ body {
     margin-top: 4px;
 }
 
-/* 6. 搶票木魚/票券祈願區塊 (全裝置自適應置中版) */
+/* 6. 搶票木魚/票券祈願區塊 */
 .muyu-section {
     width: 100%;
     margin-bottom: 40px;
@@ -599,7 +592,7 @@ body {
     }
 }
 
-/*7. 滿版長方形：歌曲應援 & 大合唱練習入口橫幅*/
+/*7. 歌曲應援 大合唱練習入口橫幅*/
 .cheer-banner-card {
     width: 100%;
     background: linear-gradient(135deg, #1c1c20 0%, #292930 100%);
@@ -671,7 +664,7 @@ body {
     box-shadow: 0 6px 20px rgba(255, 75, 147, 0.5);
 }
 
-/* 大合唱專用樣式微調 */
+/* 大合唱專用 */
 .sing-banner-card {
     border-left: 6px solid #3b82f6;
     margin-bottom: 40px;
@@ -691,7 +684,7 @@ body {
     box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
 
-/* 8. 剪貼卡片排版 (Card Grid) */
+/* 8. 剪貼卡片排版 */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -772,7 +765,7 @@ body {
 .btn-dark { background: #18181b; color: #fff; }
 .card-btn:hover { opacity: 0.9; }
 
-/* 9. 注意事項區塊 (Notice Section)*/
+/* 9. 注意事項區 */
 .notice-card {
     background-color: var(--bg-card);
     border: 2px solid var(--border-dark);
@@ -814,9 +807,7 @@ body {
     color: #f4f4f5;
 }
 
-/* ============================================================
-   10. 頁尾社群專區 (Footer Social Buttons)
-   ============================================================ */
+/* 10. 頁尾社群專區 (Footer Social Buttons)*/
 footer {
     margin-top: 80px;
     background-color: #0d0d0f;
@@ -889,7 +880,7 @@ footer {
     color: #52525b;
 }
 
-/* 11. 歌曲應援/大合唱練習頁專用樣式 (Practice Room Styles) */
+/* 11. 歌曲應援/大合唱練習頁 */
 .song-page-body {
     background-color: #121214;
     color: #ffffff;
@@ -968,6 +959,17 @@ footer {
     color: #ffffff;
     box-shadow: 0 0 12px rgba(255, 75, 147, 0.4);
     transform: scale(1.03);
+}
+.song-tab-divider {
+    color: var(--brand-pink, #ff4b93);
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    user-select: none;
+    opacity: 0.85;
 }
 
 .song-header {
@@ -1122,7 +1124,7 @@ footer {
     transform: translateY(-2px);
 }
 
-/* 12. 響應式排版 (Responsive Media Queries) */
+/* 12. 響應式排版 */
 @media (max-width: 768px) {
     .hero {
         min-height: 380px;
@@ -1138,9 +1140,9 @@ footer {
     .box-it { transform: rotate(3deg); }
 
     .deco-star-1 { top: 6%; left: 4%; font-size: 1.3rem; }
-    .deco-star-2 { display: none; } /* 手機版隱藏避免太雜亂 */
+    .deco-star-2 { display: none; } 
     .deco-star-3 { top: 8%; right: 5%; font-size: 1.3rem; }
     .deco-star-4 { bottom: 6%; left: 6%; font-size: 1.1rem; }
     
-    .deco-burst { display: none; } /* 隱藏兩側突起剪紙，留給中間乾淨舞台 */
+    .deco-burst { display: none; } 
 }
